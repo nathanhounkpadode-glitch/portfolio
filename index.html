@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nathan Schalom HOUNKPADODE | Portfolio Développeur</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #0a0f1d;
+      --bg-secondary: #111827;
+      --bg-card: rgba(17, 24, 39, 0.75);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --border-glow: rgba(59, 130, 246, 0.4);
+      --accent: #3b82f6;
+      --accent-gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+      --accent-gold: #f59e0b;
+      --accent-green: #10b981;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --font-main: 'Plus Jakarta Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      font-family: var(--font-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Ambient background glows */
+    .ambient-glow-1 {
+      position: fixed;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.12) 0%, rgba(139, 92, 246, 0.04) 50%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+      top: -150px;
+      right: -150px;
+    }
+
+    .ambient-glow-2 {
+      position: fixed;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.07) 0%, rgba(59, 130, 246, 0.03) 50%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+      bottom: 100px;
+      left: -150px;
+    }
+
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Navbar */
+    nav {
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(14px);
+      background: rgba(10, 15, 29, 0.85);
+      border-bottom: 1px solid var(--border-color);
+      z-index: 100;
+      padding: 16px 0;
+    }
+
+    nav .nav-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text-main);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo span {
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-main);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 90px 0 60px;
+      display: flex;
+      align-items: center;
+      gap: 48px;
+    }
+
+    .hero-content {
+      flex: 1;
+    }
+
+    .badge-epitech {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(59, 130, 246, 0.1);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #60a5fa;
+      margin-bottom: 24px;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      background: #10b981;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #10b981;
+    }
+
+    .hero h1 {
+      font-size: 2.85rem;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 18px;
+      letter-spacing: -0.03em;
+    }
+
+    .hero h1 .highlight {
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      max-width: 630px;
+      line-height: 1.65;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--accent-gradient);
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 10px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(59, 130, 246, 0.35);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(59, 130, 246, 0.5);
+    }
+
+    .btn-secondary {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 12px 24px;
+      border-radius: 10px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-gold {
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      color: #fbbf24;
+      padding: 12px 22px;
+      border-radius: 10px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-gold:hover {
+      background: rgba(245, 158, 11, 0.22);
+      border-color: rgba(245, 158, 11, 0.7);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(245, 158, 11, 0.3);
+    }
+
+    .hero-avatar {
+      position: relative;
+    }
+
+    .hero-avatar img {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid rgba(59, 130, 246, 0.4);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Section Styles */
+    section {
+      padding: 60px 0;
+    }
+
+    .section-header {
+      margin-bottom: 28px;
+    }
+
+    .section-tag {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    /* Filters */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+
+    .filter-btn {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      padding: 8px 18px;
+      border-radius: 9999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: var(--font-main);
+    }
+
+    .filter-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text-main);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .filter-btn.active {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+      box-shadow: 0 2px 12px rgba(59, 130, 246, 0.4);
+    }
+
+    .filter-btn.filter-perso-btn {
+      border-color: rgba(245, 158, 11, 0.5);
+      color: #fbbf24;
+      background: rgba(245, 158, 11, 0.08);
+    }
+
+    .filter-btn.filter-perso-btn:hover {
+      background: rgba(245, 158, 11, 0.16);
+      border-color: rgba(245, 158, 11, 0.8);
+      color: #fef08a;
+    }
+
+    .filter-btn.filter-perso-btn.active {
+      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+      color: #fff;
+      border-color: #f59e0b;
+      box-shadow: 0 2px 14px rgba(245, 158, 11, 0.45);
+    }
+
+    /* Grid Projects */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 24px;
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 26px;
+      backdrop-filter: blur(10px);
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .project-card.hidden {
+      display: none !important;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-glow);
+      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.35);
+    }
+
+    /* Featured Personal Projects Styling */
+    .project-card.featured-perso {
+      border: 1.5px solid rgba(245, 158, 11, 0.45);
+      background: linear-gradient(145deg, rgba(245, 158, 11, 0.07) 0%, rgba(17, 24, 39, 0.85) 100%);
+      box-shadow: 0 6px 24px rgba(245, 158, 11, 0.08);
+      position: relative;
+    }
+
+    .project-card.featured-perso:hover {
+      border-color: rgba(245, 158, 11, 0.8);
+      box-shadow: 0 16px 40px rgba(245, 158, 11, 0.22);
+    }
+
+    .project-top {
+      margin-bottom: 16px;
+    }
+
+    .project-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .project-date {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      font-family: var(--font-mono);
+    }
+
+    .project-badges {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .project-category-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 4px;
+      letter-spacing: 0.05em;
+    }
+
+    .badge-perso { background: rgba(245, 158, 11, 0.2); color: #fcd34d; border: 1px solid rgba(245, 158, 11, 0.5); }
+    .badge-web { background: rgba(59, 130, 246, 0.15); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3); }
+    .badge-system { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
+    .badge-devops { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+    .badge-ai { background: rgba(168, 85, 247, 0.15); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3); }
+    .badge-security { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
+
+    .project-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .project-desc {
+      font-size: 0.93rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .project-feature-list {
+      margin-top: 10px;
+      padding-left: 18px;
+      font-size: 0.88rem;
+      color: #cbd5e1;
+      line-height: 1.55;
+    }
+
+    .project-feature-list li {
+      margin-bottom: 4px;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 20px;
+    }
+
+    .tag {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 0.76rem;
+      padding: 3px 9px;
+      border-radius: 6px;
+      color: #93c5fd;
+      font-family: var(--font-mono);
+    }
+
+    .tag-gold {
+      background: rgba(245, 158, 11, 0.1);
+      border-color: rgba(245, 158, 11, 0.3);
+      color: #fcd34d;
+    }
+
+    /* Skills Grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .skill-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 22px;
+    }
+
+    .skill-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 14px;
+      color: #f1f5f9;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .skill-list {
+      list-style: none;
+    }
+
+    .skill-list li {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .skill-list li::before {
+      content: "▹";
+      color: var(--accent);
+      font-size: 0.85rem;
+    }
+
+    /* Contact box */
+    .contact-card {
+      background: linear-gradient(135deg, rgba(17, 24, 39, 0.9) 0%, rgba(30, 41, 59, 0.5) 100%);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 48px 32px;
+      text-align: center;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border-color);
+      padding: 40px 0;
+      margin-top: 60px;
+      text-align: center;
+      color: var(--text-dim);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 32px;
+      }
+      .hero-actions {
+        justify-content: center;
+      }
+      .nav-links {
+        display: none;
+      }
+      .filter-bar {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="ambient-glow-1"></div>
+  <div class="ambient-glow-2"></div>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="container nav-content">
+      <a href="#" class="logo">
+        Nathan <span>HOUNKPADODE</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about">À propos</a></li>
+        <li><a href="#projects">Projets</a></li>
+        <li><a href="#skills">Compétences</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <!-- Hero Section -->
+    <header class="hero" id="about">
+      <div class="hero-content">
+        <div class="badge-epitech">
+          <span class="badge-dot"></span>
+          Étudiant @ Epitech Bénin | Développeur Fullstack & Logiciel
+        </div>
+        <h1>
+          Concepteur d'applications <span class="highlight">robustes & performantes</span>
+        </h1>
+        <p>
+          Développeur passionné par les architectures logicielles propres, créateur de projets personnels en production (<strong>HNS Tips</strong>, <strong>Lecture Quotidienne EEDSC</strong>), formé à l'exigence des systèmes Unix (C) et du Web moderne (Next.js, TypeScript).
+        </p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn-primary">
+            Explorer mes projets ↓
+          </a>
+          <a href="#projects" class="btn-gold" onclick="document.querySelector('.filter-perso-btn').click();">
+            ⭐ Projets Personnels
+          </a>
+          <a href="mailto:nathan.hounkpadode@epitech.eu" class="btn-secondary">
+            Me contacter
+          </a>
+        </div>
+      </div>
+      <div class="hero-avatar">
+        <img src="avatar.png" alt="Nathan Schalom HOUNKPADODE">
+      </div>
+    </header>
+
+    <!-- Projects Section -->
+    <section id="projects">
+      <div class="section-header">
+        <div class="section-tag">Portfolio & Réalisations</div>
+        <h2 class="section-title">Mes Projets Réalisés</h2>
+      </div>
+
+      <!-- Filters -->
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">Tous (10)</button>
+        <button class="filter-btn filter-perso-btn" data-filter="perso">⭐ Projets Personnels (2)</button>
+        <button class="filter-btn" data-filter="web">Web & Fullstack</button>
+        <button class="filter-btn" data-filter="system">Systèmes & C</button>
+        <button class="filter-btn" data-filter="devops">DevOps & Cloud</button>
+        <button class="filter-btn" data-filter="ai">IA & Data</button>
+        <button class="filter-btn" data-filter="security">Cybersécurité</button>
+      </div>
+
+      <div class="projects-grid">
+
+        <!-- 1. PROJET PERSO : Lecture Quotidienne EEDSC -->
+        <div class="project-card featured-perso" data-category="perso web">
+          <div class="project-top">
+            <div class="project-meta">
+              <span class="project-date">2026 • En Production</span>
+              <div class="project-badges">
+                <span class="project-category-badge badge-perso" style="font-size: 0.78rem; padding: 4px 10px; font-weight: 800; letter-spacing: 0.05em;">⭐ PROJET PERSONNEL</span>
+                <span class="project-category-badge badge-web">Web & Mobile</span>
+              </div>
+            </div>
+            <h3 class="project-title">
+              📖 Lecture Quotidienne EEDSC
+              <span style="font-size: 0.82rem; color: #fbbf24; font-weight: 600; display: block; margin-top: 4px;">[ Projet Personnel & Développement Indépendant ]</span>
+            </h3>
+            <p class="project-desc">
+              <strong>Projet personnel & initiative originale</strong> : Plateforme spirituelle et communautaire complète conçue et développée de A à Z pour l'<em>Église Évangélique de la Délivrance et du Salut en Christ</em> (Cotonou). Architecture Next.js (App Router) et déclinaison mobile hybride via Capacitor.
+            </p>
+            <ul class="project-feature-list">
+              <li><strong>2 modes de lecture</strong> : Linéaire (Genèse à Apocalypse) et Mixte (Alliance Quotidienne).</li>
+              <li><strong>4 plans personnalisés</strong> : Immersion Réveil (3 mois), 6 mois, 9 mois et 1 an.</li>
+              <li><strong>Multilingue 4 langues avec audio</strong> : Français (Louis Segond), Anglais (KJV), Fongbé (<em>Biblu Wiwe gbè</em>) et Goun (<em>Wéyé Wéwé gbè</em>).</li>
+              <li><strong>Mur de Prière & Intercession</strong> : Requêtes communautaires avec bouton interactif « Je prie 🙏 ».</li>
+              <li><strong>Partage WhatsApp</strong> : Envoi automatisé du verset du jour en un clic.</li>
+            </ul>
+          </div>
+          <div class="project-tags">
+            <span class="tag tag-gold" style="font-weight: 700;">★ PROJET PERSONNEL</span>
+            <span class="tag">Next.js 14</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">Capacitor (Mobile)</span>
+            <span class="tag">Tailwind CSS</span>
+            <span class="tag">Multilingue (4 langues)</span>
+            <span class="tag">Mur de Prière</span>
+          </div>
+        </div>
+
+        <!-- 2. PROJET PERSO : HNS Tips -->
+        <div class="project-card featured-perso" data-category="perso web ai">
+          <div class="project-top">
+            <div class="project-meta">
+              <span class="project-date">2026 • En Production</span>
+              <div class="project-badges">
+                <span class="project-category-badge badge-perso" style="font-size: 0.78rem; padding: 4px 10px; font-weight: 800; letter-spacing: 0.05em;">⭐ PROJET PERSONNEL</span>
+                <span class="project-category-badge badge-ai">Algorithmes & IA</span>
+              </div>
+            </div>
+            <h3 class="project-title">
+              ⚡ HNS Tips — Pronostics Football & IA
+              <span style="font-size: 0.82rem; color: #fbbf24; font-weight: 600; display: block; margin-top: 4px;">[ Projet Personnel & Algorithmes Propriétaires ]</span>
+            </h3>
+            <p class="project-desc">
+              <strong>Projet personnel & création originale</strong> : Application Web & PWA interactive d'analyse sportive quantitative et d'aide à la décision probabiliste, entièrement conçue, programmée et exploitée en propre.
+            </p>
+            <ul class="project-feature-list">
+              <li><strong>Algorithme Quantitatif HNS</strong> : Évaluation probabiliste dynamique des issues de matchs et calcul d'indices de rentabilité/confiance.</li>
+              <li><strong>Scanner OCR Intelligent</strong> : Reconnaissance optique de texte intégrée (Tesseract.js) pour scanner et décoder instantanément les tickets et coupons de match.</li>
+              <li><strong>Générateur de combinés sur-mesure</strong> : Calcul d'accumulateurs selon le profil de risque (<em>Safe</em>, <em>Medium</em>, <em>Banker</em>).</li>
+              <li><strong>Mode Administration Sécurisé</strong> : Gestion d'accès propriétaire et synchronisation quotidienne automatisée du calendrier.</li>
+            </ul>
+          </div>
+          <div class="project-tags">
+            <span class="tag tag-gold" style="font-weight: 700;">★ PROJET PERSONNEL</span>
+            <span class="tag">PWA</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">Tesseract OCR</span>
+            <span class="tag">Algorithme Quantitatif</span>
+            <span class="tag">Python API</span>
+            <span class="tag">Data Analysis</span>
+          </div>
+        </div>
+
+
+        <!-- 4. Minishell 1 & 2 -->
+        <div class="project-card" data-category="system">
+          <div class="project-top">
+            <div class="project-meta">
+              <span class="project-date">2026</span>
+              <span class="project-category-badge badge-system">Système Unix / C</span>
+            </div>
+            <h3 class="project-title">Minishell 1 & 2 (Interpréteur UNIX)</h3>
+            <p class="project-desc">
+              Développement en C d'un interpréteur de commandes complet conforme aux spécifications POSIX. Parsing syntaxique, gestion des pipes chaînés (<code>|</code>), redirections d'entrées/sorties (<code>&lt;</code>, <code>&gt;</code>, <code>&gt;&gt;</code>), signaux POSIX et builtins natifs (<code>cd</code>, <code>env</code>, <code>setenv</code>).
+            </p>
+          </div>
+          <div class="project-tags">
+            <span class="tag">Langage C</span>
+            <span class="tag">POSIX</span>
+            <span class="tag">Syscalls (fork, execve, pipe)</span>
+            <span class="tag">Gestion Mémoire</span>
+            <span class="tag">Valgrind</span>
+          </div>
+        </div>
+
+        <!-- 5. EpyTodo -->
+        <div class="project-card" data-category="web">
+          <div class="project-top">
+            <div class="project-meta">
+              <span class="project-date">Sept. 2026</span>
+              <span class="project-category-badge badge-web">Backend / API</span>
+            </div>
+            <h3 class="project-title">EpyTodo — API REST Modulaire</h3>
+            <p class="project-desc">
+              Application de gestion de tâches avec API REST sécurisée. Conception en couches modulaires (routes, contrôleurs, middlewares), authentification avec JSON Web Tokens (JWT), validation des requêtes et persistance sous base relationnelle MySQL.
+            </p>
+          </div>
+          <div class="project-tags">
+            <span class="tag">TypeScript</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">Express</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">JWT & Bcrypt</span>
+          </div>
+        </div>
+
+        <!-- 6. Popeye & Chocolatine (DevOps) -->
+        <div class="project-card" data-category="devops">
+          <div class="project-top">
+            <div class="project-meta">
+              <span class="project-date">2026</span>
+              <span class="project-category-badge badge-devops">DevOps & CI/CD</span>
+            </div>
+            <h3 class="project-title">Popeye & Chocolatine (Infra & CI/CD)</h3>
+            <p class="project-desc">
+              Conteneurisation d'architectures applicatives complexes (Popeye) avec Docker et Docker Compose sur réseaux isolés, couplée à un pipeline d'intégration continue GitHub Actions automatisé (Chocolatine) assurant le linting, les tests unitaires et le déploiement sécurisé.
+            </p>
+          </div>
+          <div class="project-tags">
+            <span class="tag">Docker</span>
+            <span class="tag">Docker Compose</span>
+            <span class="tag">GitHub Actions</span>
+            <span class="tag">CI/CD Pipeline</span>
+            <span class="tag">Bash Scripting</span>
+          </div>
+        </div>
+
+        <!-- 7. MyRadar -->
+        <div class="project-card" data-category="system">
+          <div class="project-top">
+            <div class="project-meta">
+              <span class="project-date">2026</span>
+              <span class="project-category-badge badge-system">Graphique / C</span>
+            </div>
+            <h3 class="project-title">MyRadar — Contrôle Aérien 2D</h3>
+            <p class="project-desc">
+              Simulateur interactif de trafic aérien en temps réel développé en C avec la bibliothèque CSFML. Gestion fluide de centaines d'avions avec détection optimisée de collisions grâce à un algorithme de partitionnement spatial (Quadtree) à 60 FPS constants.
+            </p>
+          </div>
+          <div class="project-tags">
+            <span class="tag">Langage C</span>
+            <span class="tag">CSFML</span>
+            <span class="tag">Quadtree</span>
+            <span class="tag">Calculs Vectoriels</span>
+            <span class="tag">60 FPS</span>
+          </div>
+        </div>
+
+
+        <!-- 9. Obsidian & HackJuice (Cybersécurité) -->
+        <div class="project-card" data-category="security">
+          <div class="project-top">
+            <div class="project-meta">
+              <span class="project-date">2026</span>
+              <span class="project-category-badge badge-security">Cybersécurité</span>
+            </div>
+            <h3 class="project-title">Obsidian — Audit de Sécurité White-Box</h3>
+            <p class="project-desc">
+              Audit méthodique de sécurité applicative en boîte blanche (White-Box Security Assessment). Détection et exploitation contrôlée de vulnérabilités (OWASP Top 10 : Injections SQL, XSS, bris d'authentification, IDOR) et rédaction de rapports de remédiation technique.
+            </p>
+          </div>
+          <div class="project-tags">
+            <span class="tag">Audit White-Box</span>
+            <span class="tag">OWASP Top 10</span>
+            <span class="tag">Pentesting</span>
+            <span class="tag">Sécurité Web</span>
+            <span class="tag">Burp Suite</span>
+          </div>
+        </div>
+
+        <!-- 10. TARDIS -->
+        <div class="project-card" data-category="ai">
+          <div class="project-top">
+            <div class="project-meta">
+              <span class="project-date">Sept. - Oct. 2026</span>
+              <span class="project-category-badge badge-ai">Machine Learning</span>
+            </div>
+            <h3 class="project-title">TARDIS — Analyse Prédictive & ML</h3>
+            <p class="project-desc">
+              Dashboard interactif et entraînement d'un modèle de Machine Learning pour l'anticipation de flux de trafic. Analyse exploratoire approfondie (EDA), nettoyage et ingénierie de variables, avec restitution graphique en temps réel sous Streamlit.
+            </p>
+          </div>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Scikit-learn</span>
+            <span class="tag">Pandas / NumPy</span>
+            <span class="tag">Streamlit</span>
+          </div>
+        </div>
+
+        <!-- 11. Secured (Hash Table) -->
+        <div class="project-card" data-category="system">
+          <div class="project-top">
+            <div class="project-meta">
+              <span class="project-date">Mai - Juin 2026</span>
+              <span class="project-category-badge badge-system">Algorithmique C</span>
+            </div>
+            <h3 class="project-title">Secured — Bibliothèque Hash Table</h3>
+            <p class="project-desc">
+              Conception d'une bibliothèque dynamique de table de hachage en langage C (<code>libhashtable.a</code>) implémentant l'algorithme DJB2. Gestion rigoureuse de l'allocation dynamique et des collisions, validée à 100% sans aucune fuite mémoire avec Valgrind.
+            </p>
+          </div>
+          <div class="project-tags">
+            <span class="tag">Langage C</span>
+            <span class="tag">Algorithme DJB2</span>
+            <span class="tag">Structure de Données</span>
+            <span class="tag">Valgrind</span>
+            <span class="tag">Makefile</span>
+          </div>
+        </div>
+
+        <!-- 12. Amazed (Pathfinding) -->
+        <div class="project-card" data-category="system">
+          <div class="project-top">
+            <div class="project-meta">
+              <span class="project-date">2026</span>
+              <span class="project-category-badge badge-system">Graphes & Algorithmes</span>
+            </div>
+            <h3 class="project-title">Amazed — Résolveur de Labyrinthes</h3>
+            <p class="project-desc">
+              Moteur algorithmique haute performance de recherche de chemin optimal dans des réseaux de salles et galeries complexes (problème d'écoulement et théorie des graphes). Optimisation des temps de parcours et allocation dynamique minimale.
+            </p>
+          </div>
+          <div class="project-tags">
+            <span class="tag">Langage C</span>
+            <span class="tag">Théorie des Graphes</span>
+            <span class="tag">BFS / Dijkstra</span>
+            <span class="tag">Algorithmique</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+      <div class="section-header">
+        <div class="section-tag">Compétences Techniques</div>
+        <h2 class="section-title">Stack & Domaines d'Expertise</h2>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h3>⚡ Développement Web & Fullstack</h3>
+          <ul class="skill-list">
+            <li>Next.js 14 / React & TypeScript</li>
+            <li>Applications Mobiles Hybrides (Capacitor)</li>
+            <li>Node.js, Express & APIs REST</li>
+            <li>Prisma ORM, PostgreSQL & MySQL</li>
+            <li>Tailwind CSS, Responsive & PWA</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <h3>💻 Systèmes Unix & Langage C</h3>
+          <ul class="skill-list">
+            <li>Langage C (Pointeurs, mémoire, POSIX)</li>
+            <li>Appels système Unix (fork, pipe, execve)</li>
+            <li>Débogage avancé & Valgrind (zéro leak)</li>
+            <li>Bibliothèque graphique CSFML (2D)</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <h3>🚀 DevOps, Cloud & CI/CD</h3>
+          <ul class="skill-list">
+            <li>Docker & Docker Compose (Microservices)</li>
+            <li>Pipelines CI/CD (GitHub Actions, GitLab CI)</li>
+            <li>AWS S3 (Stockage objet & pré-signature)</li>
+            <li>Tests E2E automatisés (Playwright)</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <h3>🛡️ IA & Cybersécurité</h3>
+          <ul class="skill-list">
+            <li>Algorithmes quantitatifs probabilistes</li>
+            <li>Intégration d'OCR (Tesseract.js)</li>
+            <li>Machine Learning (Scikit-learn, Pandas)</li>
+            <li>Audit de sécurité White-Box (OWASP Top 10)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <div class="section-header">
+        <div class="section-tag">Prise de contact</div>
+        <h2 class="section-title">Discutons de vos projets</h2>
+      </div>
+
+      <div class="contact-card">
+        <h3 style="font-size: 1.6rem; margin-bottom: 12px; font-weight: 700;">Disponible pour opportunités & collaborations</h3>
+        <p style="color: var(--text-muted); margin-bottom: 28px; max-width: 580px; margin-left: auto; margin-right: auto;">
+          Étudiant à Epitech Bénin (Cotonou). Passionné par les défis d'ingénierie logicielle, les architectures scalables et le développement fullstack.
+        </p>
+        <div class="hero-actions" style="justify-content: center;">
+          <a href="mailto:nathan.hounkpadode@epitech.eu" class="btn-primary">
+            ✉️ nathan.hounkpadode@epitech.eu
+          </a>
+          <a href="tel:+2290191636313" class="btn-secondary">
+            📞 +229 01 91 63 63 13
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2026 Nathan Schalom HOUNKPADODE — Portfolio Développeur</p>
+    </footer>
+  </div>
+
+  <script>
+    // Interactive filter functionality
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+
+        const filter = button.getAttribute('data-filter');
+
+        projectCards.forEach(card => {
+          if (filter === 'all') {
+            card.classList.remove('hidden');
+          } else {
+            const categories = card.getAttribute('data-category') || '';
+            if (categories.split(' ').includes(filter)) {
+              card.classList.remove('hidden');
+            } else {
+              card.classList.add('hidden');
+            }
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
