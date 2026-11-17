@@ -1997,7 +1997,9 @@
 
           saveProfile();
           renderProfileUI();
-          showToast('Profil et Contact mis à jour avec succès !');
+          document.getElementById('adminModal').style.display = 'none';
+          showToast('Présentation d\'accueil mise à jour avec succès !', '✅');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         });
       }
 
@@ -2024,6 +2026,7 @@
           });
           saveSkills();
           renderSkills();
+          document.getElementById('adminModal').style.display = 'none';
           showToast('Compétences techniques mises à jour !', '⚡');
         });
       }
