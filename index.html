@@ -597,14 +597,14 @@
 
       <!-- Clean, ordered filters without clutter -->
       <div class="filter-bar">
-        <button class="filter-btn active" data-filter="all">Tous (20)</button>
+        <button class="filter-btn active" data-filter="all">Tous (30)</button>
         <button class="filter-btn filter-perso-btn" data-filter="perso">⭐ Projets Personnels (2)</button>
         <button class="filter-btn" data-filter="system">Système & C (12)</button>
+        <button class="filter-btn" data-filter="mat">Mathématiques (10)</button>
         <button class="filter-btn" data-filter="sec">Cybersécurité (2)</button>
         <button class="filter-btn" data-filter="ai">IA & Data (2)</button>
         <button class="filter-btn" data-filter="web">Web & Backend (3)</button>
         <button class="filter-btn" data-filter="devops">DevOps & Cloud (1)</button>
-        <button class="filter-btn" data-filter="mat">Mathématiques (1)</button>
       </div>
 
       <div class="projects-grid">
@@ -1051,34 +1051,204 @@
           </div>
         </div>
 
-        <!-- ==================== MATHÉMATIQUES & CALCUL ==================== -->
-        <!-- 21. Suite Mathématiques -->
+        <!-- ==================== PROJETS MATHÉMATIQUES DÉTAILLÉS ==================== -->
+        <!-- 21. 101pong -->
         <div class="project-card" data-category="mat system">
           <div class="project-top">
             <div class="project-meta">
               <span class="project-category-badge badge-mat">Calcul Scientifique</span>
               <span class="project-date">2026</span>
             </div>
-            <h3 class="project-title">Suite Mathématiques & Calcul Scientifique</h3>
+            <h3 class="project-title">101pong — Cinématique & Vecteurs 3D</h3>
             <p class="project-desc">
-              Résolutions algorithmiques et implémentation de méthodes mathématiques numériques appliquées :
+              Modélisation physique en espace tridimensionnel de la trajectoire d'une balle. Calcul des coordonnées cartésiennes au temps $t+n$, du vecteur vitesse, prédiction de l'impact avec le plan de la batte et calcul précis de l'angle d'incidence en degrés.
             </p>
-            <ul class="project-feature-list">
-              <li><strong>101pong</strong> : Cinématique 3D, calcul vectoriel, vitesses et angles d'incidence.</li>
-              <li><strong>102architect</strong> : Transformations géométriques 2D en coordonnées homogènes (translations, rotations, symétries axiales et compositions de matrices 3x3).</li>
-              <li><strong>103cipher</strong> : Cryptographie matricielle & chiffrement de Hill avec inversion modulaire de matrices.</li>
-              <li><strong>104neutrinos / 105demography</strong> : Écarts-types glissants, régressions linéaires et extrapolation démographique.</li>
-              <li><strong>106bombyx / 107transfer</strong> : Théorie du chaos, bifurcations et analyse spectrale / filtres polynomiaux.</li>
-              <li><strong>108trigo</strong> : Exponentielles et trigonométrie matricielle calculées par développements en séries de Taylor.</li>
-              <li><strong>109titration / 110borwein</strong> : Dérivation discrète de pH et intégration numérique (Trapèzes, Simpson, rectangles).</li>
-            </ul>
           </div>
           <div class="project-tags">
-            <span class="tag">Calcul Numérique</span>
-            <span class="tag">Cryptographie Hill</span>
-            <span class="tag">Algèbre Linéaire</span>
-            <span class="tag">Intégration Simpson</span>
+            <span class="tag">Python</span>
+            <span class="tag">Cinématique 3D</span>
+            <span class="tag">Calcul Vectoriel</span>
+            <span class="tag">Géométrie Espace</span>
+          </div>
+        </div>
+
+        <!-- 22. 102architect -->
+        <div class="project-card" data-category="mat system">
+          <div class="project-top">
+            <div class="project-meta">
+              <span class="project-category-badge badge-mat">Algèbre Linéaire</span>
+              <span class="project-date">2026</span>
+            </div>
+            <h3 class="project-title">102architect — Transformations Géométriques 2D</h3>
+            <p class="project-desc">
+              Moteur de calcul de transformations affines du plan en coordonnées homogènes. Implémentation des matrices élémentaires (translation, homothétie, rotation, symétrie axiale), composition par produit matriciel 3×3 et projection des coordonnées de points.
+            </p>
+          </div>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Coordonnées Homogènes</span>
+            <span class="tag">Produit Matriciel</span>
+            <span class="tag">Transformations Affines</span>
+          </div>
+        </div>
+
+        <!-- 23. 103cipher -->
+        <div class="project-card" data-category="mat system sec">
+          <div class="project-top">
+            <div class="project-meta">
+              <span class="project-category-badge badge-mat">Cryptographie</span>
+              <span class="project-date">2026</span>
+            </div>
+            <h3 class="project-title">103cipher — Chiffrement Matriciel de Hill</h3>
+            <p class="project-desc">
+              Système cryptographique de chiffrement et déchiffrement polygraphique basé sur les matrices inversibles. Construction dynamique de la matrice clé carrée, calcul du déterminant, inversion matricielle modulaire et multiplication matrice-vecteur.
+            </p>
+          </div>
+          <div class="project-tags">
             <span class="tag">Python / C</span>
+            <span class="tag">Chiffrement de Hill</span>
+            <span class="tag">Inversion de Matrice</span>
+            <span class="tag">Arithmétique Modulaire</span>
+          </div>
+        </div>
+
+        <!-- 24. 104neutrinos -->
+        <div class="project-card" data-category="mat system">
+          <div class="project-top">
+            <div class="project-meta">
+              <span class="project-category-badge badge-mat">Statistiques</span>
+              <span class="project-date">2026</span>
+            </div>
+            <h3 class="project-title">104neutrinos — Statistiques en Flux Continu</h3>
+            <p class="project-desc">
+              Traitement statistique en temps réel d'un flux continu de données physiques. Calcul en ligne et actualisation dynamique sans réallocation des métriques : moyenne arithmétique, moyenne quadratique (RMS), moyenne harmonique et écart-type (variance).
+            </p>
+          </div>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Moyenne Quadratique (RMS)</span>
+            <span class="tag">Écart-Type</span>
+            <span class="tag">Flux Continu</span>
+          </div>
+        </div>
+
+        <!-- 25. 105demography -->
+        <div class="project-card" data-category="mat system">
+          <div class="project-top">
+            <div class="project-meta">
+              <span class="project-category-badge badge-mat">Analyse de Données</span>
+              <span class="project-date">2026</span>
+            </div>
+            <h3 class="project-title">105demography — Régressions & Extrapolation</h3>
+            <p class="project-desc">
+              Modélisation prédictive de populations mondiales à partir des données démographiques de l'ONU. Ajustement par la méthode des moindres carrés (Fit I & Fit II), calcul du coefficient de corrélation linéaire de Pearson et extrapolation à l'horizon 2050.
+            </p>
+          </div>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Moindres Carrés</span>
+            <span class="tag">Corrélation de Pearson</span>
+            <span class="tag">Extrapolation</span>
+          </div>
+        </div>
+
+        <!-- 26. 106bombyx -->
+        <div class="project-card" data-category="mat system">
+          <div class="project-top">
+            <div class="project-meta">
+              <span class="project-category-badge badge-mat">Systèmes Dynamiques</span>
+              <span class="project-date">2026</span>
+            </div>
+            <h3 class="project-title">106bombyx — Modèle Logistique & Chaos</h3>
+            <p class="project-desc">
+              Simulation mathématique de dynamique de population via la suite logistique de Verhulst. Calcul des états d'équilibre, détection des cycles et bifurcations périodiques et génération de données pour le tracé du diagramme de bifurcation du chaos.
+            </p>
+          </div>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Suite Logistique</span>
+            <span class="tag">Théorie du Chaos</span>
+            <span class="tag">Bifurcations</span>
+          </div>
+        </div>
+
+        <!-- 27. 107transfer -->
+        <div class="project-card" data-category="mat system">
+          <div class="project-top">
+            <div class="project-meta">
+              <span class="project-category-badge badge-mat">Traitement Signal</span>
+              <span class="project-date">2026</span>
+            </div>
+            <h3 class="project-title">107transfer — Fonctions de Transfert</h3>
+            <p class="project-desc">
+              Analyse de transmission de signaux dans des composants électroniques montés en cascade. Évaluation d'expressions rationnelles de polynômes (numérateurs / dénominateurs) et calcul de la réponse en fréquence globale du système pour $x \in [0, 1]$.
+            </p>
+          </div>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Fonctions de Transfert</span>
+            <span class="tag">Polynômes</span>
+            <span class="tag">Traitement du Signal</span>
+          </div>
+        </div>
+
+        <!-- 28. 108trigo -->
+        <div class="project-card" data-category="mat system">
+          <div class="project-top">
+            <div class="project-meta">
+              <span class="project-category-badge badge-mat">Calcul Matriciel</span>
+              <span class="project-date">2026</span>
+            </div>
+            <h3 class="project-title">108trigo — Trigonométrie & Exponentielle Matricielle</h3>
+            <p class="project-desc">
+              Calcul de fonctions analytiques appliquées à des matrices carrées d'ordre $n$ ($\cos, \sin, \cosh, \sinh, \exp$). Algorithme d'approximation numérique par développement en séries entières de Taylor jusqu'au seuil de convergence ($10^{-7}$).
+            </p>
+          </div>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Séries de Taylor</span>
+            <span class="tag">Exponentielle Matricielle</span>
+            <span class="tag">Algèbre Linéaire</span>
+          </div>
+        </div>
+
+        <!-- 29. 109titration -->
+        <div class="project-card" data-category="mat system">
+          <div class="project-top">
+            <div class="project-meta">
+              <span class="project-category-badge badge-mat">Analyse Numérique</span>
+              <span class="project-date">2026</span>
+            </div>
+            <h3 class="project-title">109titration — Dérivation Discrète & Dosage Chimique</h3>
+            <p class="project-desc">
+              Détermination automatique du point d'équivalence d'un titrage acido-basique. Calcul des dérivées première et seconde discrètes par différences finies centrées, interpolation polynomiale locale et localisation précise du zéro de la dérivée seconde.
+            </p>
+          </div>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Dérivée Discrète</span>
+            <span class="tag">Différences Finies</span>
+            <span class="tag">Interpolation</span>
+          </div>
+        </div>
+
+        <!-- 30. 110borwein -->
+        <div class="project-card" data-category="mat system">
+          <div class="project-top">
+            <div class="project-meta">
+              <span class="project-category-badge badge-mat">Calcul Intégral</span>
+              <span class="project-date">2026</span>
+            </div>
+            <h3 class="project-title">110borwein — Méthodes d'Intégration Numérique</h3>
+            <p class="project-desc">
+              Calcul numérique haute précision des intégrales de Borwein $\int_0^\infty \prod \frac{\sin(x/a_k)}{x/a_k} dx$. Implémentation comparative de trois schémas d'intégration numérique : méthode des rectangles (point milieu), méthode des trapèzes et règle de Simpson.
+            </p>
+          </div>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Intégration Numérique</span>
+            <span class="tag">Règle de Simpson</span>
+            <span class="tag">Méthode des Trapèzes</span>
           </div>
         </div>
 
