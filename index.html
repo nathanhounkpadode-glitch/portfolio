@@ -397,12 +397,15 @@
     }
 
     .badge-perso { background: rgba(245, 158, 11, 0.2); color: #fcd34d; border: 1px solid rgba(245, 158, 11, 0.5); }
+    .badge-psu { background: rgba(14, 165, 233, 0.18); color: #38bdf8; border: 1px solid rgba(14, 165, 233, 0.45); }
+    .badge-cpe { background: rgba(99, 102, 241, 0.18); color: #a5b4fc; border: 1px solid rgba(99, 102, 241, 0.45); }
+    .badge-graphic { background: rgba(236, 72, 153, 0.18); color: #f472b6; border: 1px solid rgba(236, 72, 153, 0.45); }
     .badge-system { background: rgba(59, 130, 246, 0.15); color: #93c5fd; border: 1px solid rgba(59, 130, 246, 0.3); }
     .badge-sec { background: rgba(239, 68, 68, 0.15); color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.3); }
     .badge-ai { background: rgba(168, 85, 247, 0.15); color: #d8b4fe; border: 1px solid rgba(168, 85, 247, 0.3); }
     .badge-devops { background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.3); }
     .badge-mat { background: rgba(234, 179, 8, 0.15); color: #fde047; border: 1px solid rgba(234, 179, 8, 0.3); }
-    .badge-web { background: rgba(99, 102, 241, 0.15); color: #a5b4fc; border: 1px solid rgba(99, 102, 241, 0.3); }
+    .badge-web { background: rgba(20, 184, 166, 0.18); color: #2dd4bf; border: 1px solid rgba(20, 184, 166, 0.45); }
 
     .project-date {
       font-size: 0.78rem;
@@ -599,12 +602,14 @@
       <div class="filter-bar">
         <button class="filter-btn active" data-filter="all">Tous (30)</button>
         <button class="filter-btn filter-perso-btn" data-filter="perso">⭐ Projets Personnels (2)</button>
-        <button class="filter-btn" data-filter="system">Système & C (12)</button>
+        <button class="filter-btn" data-filter="psu">PSU — Système Unix (4)</button>
+        <button class="filter-btn" data-filter="cpe">Algorithmes & C (6)</button>
+        <button class="filter-btn" data-filter="graphic">Graphique & CSFML (2)</button>
         <button class="filter-btn" data-filter="mat">Mathématiques (10)</button>
         <button class="filter-btn" data-filter="sec">Cybersécurité (2)</button>
         <button class="filter-btn" data-filter="ai">IA & Data (2)</button>
-        <button class="filter-btn" data-filter="web">Web & Backend (1)</button>
         <button class="filter-btn" data-filter="devops">DevOps & Cloud (1)</button>
+        <button class="filter-btn" data-filter="web">Web & Backend (1)</button>
       </div>
 
       <div class="projects-grid">
@@ -615,7 +620,7 @@
           <div class="project-top">
             <div class="project-meta">
               <span class="project-category-badge badge-perso">⭐ PROJET PERSONNEL</span>
-              <span class="project-date">2026 • En Production</span>
+              <span class="project-date">Nov. 2026 • En Production</span>
             </div>
             <h3 class="project-title">
               📖 Lecture Quotidienne EEDSC
@@ -647,7 +652,7 @@
           <div class="project-top">
             <div class="project-meta">
               <span class="project-category-badge badge-perso">⭐ PROJET PERSONNEL</span>
-              <span class="project-date">2026 • En Production</span>
+              <span class="project-date">Oct. 2026 • En Production</span>
             </div>
             <h3 class="project-title">
               ⚡ HNS Tips — Pronostics Football & IA
@@ -675,11 +680,11 @@
 
         <!-- ==================== SYSTÈME & C ==================== -->
         <!-- 3. Minishell 1 & 2 -->
-        <div class="project-card" data-category="system">
+        <div class="project-card" data-category="psu">
           <div class="project-top">
             <div class="project-meta">
-              <span class="project-category-badge badge-system">Système Unix / C</span>
-              <span class="project-date">2026</span>
+              <span class="project-category-badge badge-psu">Système Unix (PSU)</span>
+              <span class="project-date">Juin - Juil. 2026</span>
             </div>
             <h3 class="project-title">Minishell 1 & 2 (Interpréteur UNIX)</h3>
             <p class="project-desc">
@@ -696,11 +701,11 @@
         </div>
 
         <!-- 4. Corewar : Robot Factory -->
-        <div class="project-card" data-category="system">
+        <div class="project-card" data-category="cpe">
           <div class="project-top">
             <div class="project-meta">
-              <span class="project-category-badge badge-system">Compilation & C</span>
-              <span class="project-date">2026</span>
+              <span class="project-category-badge badge-cpe">Compilation & C (CPE)</span>
+              <span class="project-date">Août 2026</span>
             </div>
             <h3 class="project-title">Corewar : Robot Factory (Assembleur C)</h3>
             <p class="project-desc">
@@ -717,11 +722,11 @@
         </div>
 
         <!-- 5. MyTop -->
-        <div class="project-card" data-category="system">
+        <div class="project-card" data-category="psu">
           <div class="project-top">
             <div class="project-meta">
-              <span class="project-category-badge badge-system">Système Linux / C</span>
-              <span class="project-date">2026</span>
+              <span class="project-category-badge badge-psu">Système Linux (PSU)</span>
+              <span class="project-date">Mai - Juin 2026</span>
             </div>
             <h3 class="project-title">MyTop — Moniteur Système Linux en C</h3>
             <p class="project-desc">
@@ -738,11 +743,11 @@
         </div>
 
         <!-- 6. MySudo -->
-        <div class="project-card" data-category="system">
+        <div class="project-card" data-category="psu">
           <div class="project-top">
             <div class="project-meta">
-              <span class="project-category-badge badge-sec">Sécurité Système C</span>
-              <span class="project-date">2026</span>
+              <span class="project-category-badge badge-psu">Système & Sécurité (PSU)</span>
+              <span class="project-date">Avril 2026</span>
             </div>
             <h3 class="project-title">MySudo — Délégation de Privilèges Root</h3>
             <p class="project-desc">
@@ -759,11 +764,11 @@
         </div>
 
         <!-- 7. MyLs -->
-        <div class="project-card" data-category="system">
+        <div class="project-card" data-category="psu">
           <div class="project-top">
             <div class="project-meta">
-              <span class="project-category-badge badge-system">Système Unix / C</span>
-              <span class="project-date">2026</span>
+              <span class="project-category-badge badge-psu">Système Unix (PSU)</span>
+              <span class="project-date">Mars 2026</span>
             </div>
             <h3 class="project-title">MyLs — Explorateur de Fichiers POSIX</h3>
             <p class="project-desc">
@@ -779,11 +784,11 @@
         </div>
 
         <!-- 8. Organized -->
-        <div class="project-card" data-category="system">
+        <div class="project-card" data-category="cpe">
           <div class="project-top">
             <div class="project-meta">
-              <span class="project-category-badge badge-system">Algorithmes & C</span>
-              <span class="project-date">2026</span>
+              <span class="project-category-badge badge-cpe">Algorithmes & C (CPE)</span>
+              <span class="project-date">Avril - Juin 2026</span>
             </div>
             <h3 class="project-title">Organized — Gestionnaire & Tri Dynamique</h3>
             <p class="project-desc">
@@ -800,11 +805,11 @@
         </div>
 
         <!-- 9. Setting Up -->
-        <div class="project-card" data-category="system">
+        <div class="project-card" data-category="cpe">
           <div class="project-top">
             <div class="project-meta">
-              <span class="project-category-badge badge-system">Prog. Dynamique C</span>
-              <span class="project-date">2026</span>
+              <span class="project-category-badge badge-cpe">Prog. Dynamique (CPE)</span>
+              <span class="project-date">Mars 2026</span>
             </div>
             <h3 class="project-title">Setting Up — Plus Grand Carré 2D</h3>
             <p class="project-desc">
@@ -820,11 +825,11 @@
         </div>
 
         <!-- 10. Secured -->
-        <div class="project-card" data-category="system">
+        <div class="project-card" data-category="cpe">
           <div class="project-top">
             <div class="project-meta">
-              <span class="project-category-badge badge-system">Structures & C</span>
-              <span class="project-date">2026</span>
+              <span class="project-category-badge badge-cpe">Structures & C (CPE)</span>
+              <span class="project-date">Juin 2026</span>
             </div>
             <h3 class="project-title">Secured — Bibliothèque Hash Table</h3>
             <p class="project-desc">
@@ -841,11 +846,11 @@
         </div>
 
         <!-- 11. Amazed -->
-        <div class="project-card" data-category="system">
+        <div class="project-card" data-category="cpe">
           <div class="project-top">
             <div class="project-meta">
-              <span class="project-category-badge badge-system">Graphes & Algorithmes</span>
-              <span class="project-date">2026</span>
+              <span class="project-category-badge badge-cpe">Graphes & Algorithmes (CPE)</span>
+              <span class="project-date">Juil. 2026</span>
             </div>
             <h3 class="project-title">Amazed — Résolveur de Labyrinthes</h3>
             <p class="project-desc">
@@ -861,11 +866,11 @@
         </div>
 
         <!-- 12. My_Printf & Mini_Printf -->
-        <div class="project-card" data-category="system">
+        <div class="project-card" data-category="cpe">
           <div class="project-top">
             <div class="project-meta">
-              <span class="project-category-badge badge-system">Système & C</span>
-              <span class="project-date">2026</span>
+              <span class="project-category-badge badge-cpe">Algorithmes & C (CPE)</span>
+              <span class="project-date">Fév. - Mars 2026</span>
             </div>
             <h3 class="project-title">My_Printf & Mini_Printf (Recréation C)</h3>
             <p class="project-desc">
@@ -881,11 +886,11 @@
         </div>
 
         <!-- 13. MyRadar -->
-        <div class="project-card" data-category="system">
+        <div class="project-card" data-category="graphic">
           <div class="project-top">
             <div class="project-meta">
-              <span class="project-category-badge badge-system">Graphique CSFML</span>
-              <span class="project-date">2026</span>
+              <span class="project-category-badge badge-graphic">Graphique 2D (CSFML)</span>
+              <span class="project-date">Mai - Juin 2026</span>
             </div>
             <h3 class="project-title">MyRadar — Contrôle Aérien 2D</h3>
             <p class="project-desc">
@@ -902,11 +907,11 @@
         </div>
 
         <!-- 14. MyHunter -->
-        <div class="project-card" data-category="system">
+        <div class="project-card" data-category="graphic">
           <div class="project-top">
             <div class="project-meta">
-              <span class="project-category-badge badge-system">Graphique CSFML</span>
-              <span class="project-date">2026</span>
+              <span class="project-category-badge badge-graphic">Graphique 2D (CSFML)</span>
+              <span class="project-date">Mars - Avril 2026</span>
             </div>
             <h3 class="project-title">MyHunter — Jeu Vidéo 2D en C</h3>
             <p class="project-desc">
@@ -928,7 +933,7 @@
           <div class="project-top">
             <div class="project-meta">
               <span class="project-category-badge badge-sec">Cybersécurité / Audit</span>
-              <span class="project-date">2026</span>
+              <span class="project-date">Sept. - Oct. 2026</span>
             </div>
             <h3 class="project-title">Obsidian — Audit de Sécurité White-Box & Black-Box</h3>
             <p class="project-desc">
@@ -949,7 +954,7 @@
           <div class="project-top">
             <div class="project-meta">
               <span class="project-category-badge badge-sec">Cybersécurité / Pentest</span>
-              <span class="project-date">2026</span>
+              <span class="project-date">Août 2026</span>
             </div>
             <h3 class="project-title">Hack&Juice — Test d'Intrusion & Exploitation Web</h3>
             <p class="project-desc">
@@ -971,7 +976,7 @@
           <div class="project-top">
             <div class="project-meta">
               <span class="project-category-badge badge-ai">IA & Data en C</span>
-              <span class="project-date">2026</span>
+              <span class="project-date">Juil. - Août 2026</span>
             </div>
             <h3 class="project-title">Cuddle — Bibliothèque DataFrame & IA en C</h3>
             <p class="project-desc">
@@ -992,7 +997,7 @@
           <div class="project-top">
             <div class="project-meta">
               <span class="project-category-badge badge-ai">Machine Learning</span>
-              <span class="project-date">2026</span>
+              <span class="project-date">Sept. - Oct. 2026</span>
             </div>
             <h3 class="project-title">TARDIS — Analyse Prédictive & ML</h3>
             <p class="project-desc">
@@ -1013,7 +1018,7 @@
           <div class="project-top">
             <div class="project-meta">
               <span class="project-category-badge badge-devops">DevOps & CI/CD</span>
-              <span class="project-date">2026</span>
+              <span class="project-date">Juil. - Août 2026</span>
             </div>
             <h3 class="project-title">Popeye & Chocolatine (Infra & CI/CD)</h3>
             <p class="project-desc">
@@ -1034,8 +1039,8 @@
         <div class="project-card" data-category="web">
           <div class="project-top">
             <div class="project-meta">
-              <span class="project-category-badge badge-web">Backend / API</span>
-              <span class="project-date">2026</span>
+              <span class="project-category-badge badge-web">Backend / API REST</span>
+              <span class="project-date">Sept. 2026</span>
             </div>
             <h3 class="project-title">EpyTodo — API REST Modulaire</h3>
             <p class="project-desc">
@@ -1057,7 +1062,7 @@
           <div class="project-top">
             <div class="project-meta">
               <span class="project-category-badge badge-mat">Calcul Scientifique</span>
-              <span class="project-date">2026</span>
+              <span class="project-date">Mars 2026</span>
             </div>
             <h3 class="project-title">101pong — Cinématique & Vecteurs 3D</h3>
             <p class="project-desc">
@@ -1077,7 +1082,7 @@
           <div class="project-top">
             <div class="project-meta">
               <span class="project-category-badge badge-mat">Algèbre Linéaire</span>
-              <span class="project-date">2026</span>
+              <span class="project-date">Mars - Avril 2026</span>
             </div>
             <h3 class="project-title">102architect — Transformations Géométriques 2D</h3>
             <p class="project-desc">
@@ -1097,7 +1102,7 @@
           <div class="project-top">
             <div class="project-meta">
               <span class="project-category-badge badge-mat">Cryptographie</span>
-              <span class="project-date">2026</span>
+              <span class="project-date">Avril 2026</span>
             </div>
             <h3 class="project-title">103cipher — Chiffrement Matriciel de Hill</h3>
             <p class="project-desc">
@@ -1117,7 +1122,7 @@
           <div class="project-top">
             <div class="project-meta">
               <span class="project-category-badge badge-mat">Statistiques</span>
-              <span class="project-date">2026</span>
+              <span class="project-date">Avril 2026</span>
             </div>
             <h3 class="project-title">104neutrinos — Statistiques en Flux Continu</h3>
             <p class="project-desc">
@@ -1137,7 +1142,7 @@
           <div class="project-top">
             <div class="project-meta">
               <span class="project-category-badge badge-mat">Analyse de Données</span>
-              <span class="project-date">2026</span>
+              <span class="project-date">Mai 2026</span>
             </div>
             <h3 class="project-title">105demography — Régressions & Extrapolation</h3>
             <p class="project-desc">
@@ -1157,7 +1162,7 @@
           <div class="project-top">
             <div class="project-meta">
               <span class="project-category-badge badge-mat">Systèmes Dynamiques</span>
-              <span class="project-date">2026</span>
+              <span class="project-date">Juin - Juil. 2026</span>
             </div>
             <h3 class="project-title">106bombyx — Modèle Logistique & Chaos</h3>
             <p class="project-desc">
@@ -1177,7 +1182,7 @@
           <div class="project-top">
             <div class="project-meta">
               <span class="project-category-badge badge-mat">Traitement Signal</span>
-              <span class="project-date">2026</span>
+              <span class="project-date">Juil. 2026</span>
             </div>
             <h3 class="project-title">107transfer — Fonctions de Transfert</h3>
             <p class="project-desc">
@@ -1197,7 +1202,7 @@
           <div class="project-top">
             <div class="project-meta">
               <span class="project-category-badge badge-mat">Calcul Matriciel</span>
-              <span class="project-date">2026</span>
+              <span class="project-date">Juil. - Août 2026</span>
             </div>
             <h3 class="project-title">108trigo — Trigonométrie & Exponentielle Matricielle</h3>
             <p class="project-desc">
@@ -1217,7 +1222,7 @@
           <div class="project-top">
             <div class="project-meta">
               <span class="project-category-badge badge-mat">Analyse Numérique</span>
-              <span class="project-date">2026</span>
+              <span class="project-date">Août 2026</span>
             </div>
             <h3 class="project-title">109titration — Dérivation Discrète & Dosage Chimique</h3>
             <p class="project-desc">
@@ -1237,7 +1242,7 @@
           <div class="project-top">
             <div class="project-meta">
               <span class="project-category-badge badge-mat">Calcul Intégral</span>
-              <span class="project-date">2026</span>
+              <span class="project-date">Août 2026</span>
             </div>
             <h3 class="project-title">110borwein — Méthodes d'Intégration Numérique</h3>
             <p class="project-desc">
