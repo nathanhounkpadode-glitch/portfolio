@@ -1,3 +1,14 @@
+
+window.PORTFOLIO_PROFILE = {
+  "name": "Nathan HOUNKPADODE",
+  "fullName": "Nathan Schalom HOUNKPADODE",
+  "badge": "Développeur Logiciel & Systèmes",
+  "headline": "Concepteur d'applications <span class=\"highlight\">robustes & performantes</span>",
+  "bio": "Développeur rigoureux passionné par la <strong>programmation Système & C</strong>, les architectures logicielles propres et le développement Fullstack moderne. Créateur d'applications en production (dont la plateforme spirituelle et mobile <strong>Lecture Quotidienne EEDSC</strong>).",
+  "avatar": "avatar.png",
+  "email": "nathan.hounkpadode@epitech.eu",
+  "phone": "+229 01 91 63 63 13"
+};
 // ================================================================
 // DONNÉES DU PORTFOLIO — MODIFIABLES SANS TOUCHER AU CODE HTML !
 // ================================================================

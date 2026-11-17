@@ -809,6 +809,152 @@
       grid-column: 1 / -1;
     }
 
+
+    /* Hero Avatar Hover Overlay */
+    .hero-avatar {
+      position: relative;
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    .hero-avatar img {
+      transition: filter 0.25s ease, transform 0.25s ease;
+    }
+
+    .hero-avatar:hover img {
+      filter: brightness(0.75);
+    }
+
+    .avatar-edit-overlay {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(4px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      border: 2px dashed var(--accent);
+      pointer-events: none;
+    }
+
+    .hero-avatar:hover .avatar-edit-overlay {
+      opacity: 1;
+    }
+
+    .avatar-edit-icon {
+      font-size: 1.8rem;
+    }
+
+    .avatar-edit-text {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #93c5fd;
+    }
+
+    /* Admin Tabs */
+    .admin-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 22px;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 12px;
+    }
+
+    .admin-tab-btn {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      padding: 9px 18px;
+      border-radius: 10px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: var(--font-main);
+    }
+
+    .admin-tab-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text-main);
+    }
+
+    .admin-tab-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.35);
+    }
+
+    .admin-tab-pane {
+      display: none;
+    }
+
+    .admin-tab-pane.active {
+      display: block;
+    }
+
+    /* Avatar Upload in Modal */
+    .avatar-upload-box {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 16px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .avatar-preview-circle {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--accent);
+      background: var(--bg-secondary);
+      flex-shrink: 0;
+    }
+
+    .avatar-upload-actions {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    /* Toast Notification */
+    .toast-notification {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #1e293b;
+      border: 1px solid var(--accent);
+      color: #fff;
+      padding: 14px 22px;
+      border-radius: 12px;
+      font-size: 0.92rem;
+      font-weight: 500;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+
+    .toast-notification.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
   </style>
   <script src="data/projects.js"></script>
 </head>
@@ -835,14 +981,14 @@
     <!-- Hero Section -->
     <header class="hero" id="about">
       <div class="hero-content">
-        <div class="badge-epitech">
+        <div class="badge-epitech" id="profileBadge">
           <span class="badge-dot"></span>
-          Développeur Logiciel & Systèmes
+          <span id="profileBadgeText">Développeur Logiciel & Systèmes</span>
         </div>
-        <h1>
+        <h1 id="profileHeadline">
           Concepteur d'applications <span class="highlight">robustes & performantes</span>
         </h1>
-        <p>
+        <p id="profileBio">
           Développeur rigoureux passionné par la <strong>programmation Système & C</strong>, les architectures logicielles propres et le développement Fullstack moderne. Créateur d'applications en production (dont la plateforme spirituelle et mobile <strong>Lecture Quotidienne EEDSC</strong>).
         </p>
         <div class="hero-actions">
@@ -857,8 +1003,13 @@
           </a>
         </div>
       </div>
-      <div class="hero-avatar">
-        <img src="avatar.png" alt="Nathan Schalom HOUNKPADODE">
+      <div class="hero-avatar" id="heroAvatarContainer" title="Cliquez pour changer la photo de profil">
+        <img src="avatar.png" alt="Nathan Schalom HOUNKPADODE" id="profileAvatarImg">
+        <div class="avatar-edit-overlay">
+          <span class="avatar-edit-icon">📷</span>
+          <span class="avatar-edit-text">Changer la photo</span>
+        </div>
+        <input type="file" id="avatarFileInput" accept="image/*" style="display: none;">
       </div>
     </header>
 
@@ -959,11 +1110,11 @@
           Développeur logiciel & web. Passionné par les défis d'ingénierie, la programmation système et les architectures modernes.
         </p>
         <div class="hero-actions" style="justify-content: center;">
-          <a href="mailto:nathan.hounkpadode@epitech.eu" class="btn-primary">
-            ✉️ nathan.hounkpadode@epitech.eu
+          <a href="mailto:nathan.hounkpadode@epitech.eu" class="btn-primary" id="contactEmailBtn">
+            ✉️ <span id="contactEmailText">nathan.hounkpadode@epitech.eu</span>
           </a>
-          <a href="tel:+2290191636313" class="btn-secondary">
-            📞 +229 01 91 63 63 13
+          <a href="tel:+2290191636313" class="btn-secondary" id="contactPhoneBtn">
+            📞 <span id="contactPhoneText">+229 01 91 63 63 13</span>
           </a>
         </div>
       </div>
@@ -975,95 +1126,191 @@
   </div>
 
     <!-- Modal de Gestion Dynamique des Projets (Sans coder) -->
+    <!-- Modal de Gestion Dynamique (Profil, Photo & Projets) -->
   <div id="adminModal" class="admin-modal" style="display: none;">
     <div class="admin-modal-content">
       <div class="admin-modal-header">
-        <h3>⚙️ Gestionnaire Dynamique de Projets</h3>
+        <h3>⚙️ Gestionnaire Dynamique du Portfolio</h3>
         <button id="closeAdminModalBtn" class="admin-close-btn">&times;</button>
       </div>
       <div class="admin-modal-body">
-        <div class="admin-tip">
-          💡 <strong>Zéro code en dur</strong> : Vous pouvez ajouter un nouveau projet ou modifier un projet existant ici. Vos modifications s'affichent instantanément en direct sur le portfolio !
-        </div>
         
-        <form id="projectForm" class="admin-form">
-          <input type="hidden" id="formProjectId" value="">
+        <!-- Navigation Onglets -->
+        <div class="admin-tabs">
+          <button type="button" class="admin-tab-btn active" data-tab="tab-profile">👤 Profil & Photo</button>
+          <button type="button" class="admin-tab-btn" data-tab="tab-projects">📋 Projets & Réalisations</button>
+        </div>
+
+        <!-- ================= ONGLET 1 : PROFIL & PHOTO ================= -->
+        <div id="tab-profile" class="admin-tab-pane active">
+          <div class="admin-tip">
+            💡 <strong>Personnalisation instantanée</strong> : Changez votre photo de profil, votre titre, votre bio ou vos coordonnées. Tout se met à jour en direct sur votre site !
+          </div>
+
+          <form id="profileForm" class="admin-form">
+            <!-- Section Photo de profil -->
+            <label>Photo de profil</label>
+            <div class="avatar-upload-box">
+              <img id="modalAvatarPreview" src="avatar.png" alt="Aperçu photo" class="avatar-preview-circle">
+              <div class="avatar-upload-actions">
+                <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px;">
+                  <button type="button" class="btn-primary" id="modalChooseFileBtn" style="font-size: 0.85rem; padding: 8px 14px;">
+                    📁 Choisir une photo (PC / Téléphone)
+                  </button>
+                  <button type="button" class="btn-secondary" id="modalResetAvatarBtn" style="font-size: 0.85rem; padding: 8px 14px;">
+                    🔄 Remettre la photo initiale
+                  </button>
+                </div>
+                <input type="file" id="modalAvatarFileInput" accept="image/*" style="display: none;">
+                <input type="text" id="profileAvatarUrlInput" placeholder="Ou coller une URL d'image en ligne (https://...)" style="font-size: 0.82rem; padding: 8px 12px;">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="profileNameInput">Nom affiché *</label>
+                <input type="text" id="profileNameInput" required placeholder="Ex: Nathan HOUNKPADODE">
+              </div>
+              <div class="form-group">
+                <label for="profileBadgeInput">Badge de statut / Métier *</label>
+                <input type="text" id="profileBadgeInput" required placeholder="Ex: Développeur Logiciel & Systèmes">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="profileHeadlineInput">Titre d'accroche (H1) *</label>
+              <input type="text" id="profileHeadlineInput" required placeholder="Ex: Concepteur d'applications robustes & performantes">
+            </div>
+
+            <div class="form-group">
+              <label for="profileBioInput">Texte de présentation / Bio *</label>
+              <textarea id="profileBioInput" rows="3" required placeholder="Votre description, passions techniques et réalisations..."></textarea>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="profileEmailInput">Email de contact *</label>
+                <input type="email" id="profileEmailInput" required placeholder="votre.email@epitech.eu">
+              </div>
+              <div class="form-group">
+                <label for="profilePhoneInput">Téléphone *</label>
+                <input type="text" id="profilePhoneInput" required placeholder="+229 ...">
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn-primary">💾 Enregistrer le Profil & Photo</button>
+              <button type="button" class="btn-secondary" id="downloadProfileJsonBtn">📥 Télécharger profile.json</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- ================= ONGLET 2 : PROJETS ================= -->
+        <div id="tab-projects" class="admin-tab-pane">
+          <div class="admin-tip">
+            💡 <strong>Gestion des projets sans code</strong> : Ajoutez ou modifiez un projet ci-dessous. Le calcul des filtres se fait en temps réel !
+          </div>
           
-          <div class="form-row">
-            <div class="form-group">
-              <label for="formTitle">Titre du projet *</label>
-              <input type="text" id="formTitle" required placeholder="Ex: Mon Super Projet">
+          <form id="projectForm" class="admin-form">
+            <input type="hidden" id="formProjectId" value="">
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="formTitle">Titre du projet *</label>
+                <input type="text" id="formTitle" required placeholder="Ex: Mon Super Projet">
+              </div>
+              <div class="form-group">
+                <label for="formCategory">Catégorie *</label>
+                <select id="formCategory" required>
+                  <option value="perso">⭐ Projet Personnel</option>
+                  <option value="psu">PSU — Système Unix</option>
+                  <option value="cpe">Algorithmes & C</option>
+                  <option value="graphic">Graphique & CSFML</option>
+                  <option value="mat">Mathématiques</option>
+                  <option value="sec">Cybersécurité</option>
+                  <option value="ai">IA & Data</option>
+                  <option value="devops">DevOps & Cloud</option>
+                  <option value="web">Web & Backend</option>
+                </select>
+              </div>
             </div>
-            <div class="form-group">
-              <label for="formCategory">Catégorie *</label>
-              <select id="formCategory" required>
-                <option value="perso">⭐ Projet Personnel</option>
-                <option value="psu">PSU — Système Unix</option>
-                <option value="cpe">Algorithmes & C</option>
-                <option value="graphic">Graphique & CSFML</option>
-                <option value="mat">Mathématiques</option>
-                <option value="sec">Cybersécurité</option>
-                <option value="ai">IA & Data</option>
-                <option value="devops">DevOps & Cloud</option>
-                <option value="web">Web & Backend</option>
-              </select>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="formDate">Date / Période *</label>
+                <input type="text" id="formDate" required placeholder="Ex: Nov. 2026">
+              </div>
+              <div class="form-group">
+                <label for="formBadge">Badge / Domaine (optionnel)</label>
+                <input type="text" id="formBadge" placeholder="Ex: Système Unix, Fullstack...">
+              </div>
             </div>
-          </div>
 
-          <div class="form-row">
             <div class="form-group">
-              <label for="formDate">Date / Période *</label>
-              <input type="text" id="formDate" required placeholder="Ex: Nov. 2026">
+              <label for="formDesc">Description détaillée *</label>
+              <textarea id="formDesc" rows="3" required placeholder="Description détaillée du projet et contexte de réalisation..."></textarea>
             </div>
+
             <div class="form-group">
-              <label for="formBadge">Badge / Domaine (optionnel)</label>
-              <input type="text" id="formBadge" placeholder="Ex: Système Unix, Fullstack...">
+              <label for="formTags">Technologies / Tags (séparés par des virgules) *</label>
+              <input type="text" id="formTags" required placeholder="Ex: C, Linux, POSIX, Docker, Git">
             </div>
-          </div>
 
-          <div class="form-group">
-            <label for="formDesc">Description détaillée *</label>
-            <textarea id="formDesc" rows="3" required placeholder="Description détaillée du projet et contexte de réalisation..."></textarea>
-          </div>
+            <div class="form-group">
+              <label for="formFeatures">Points clés / Puces (une puce par ligne, optionnel)</label>
+              <textarea id="formFeatures" rows="3" placeholder="Point fort 1&#10;Point fort 2&#10;Point fort 3"></textarea>
+            </div>
 
-          <div class="form-group">
-            <label for="formTags">Technologies / Tags (séparés par des virgules) *</label>
-            <input type="text" id="formTags" required placeholder="Ex: C, Linux, POSIX, Docker, Git">
-          </div>
+            <div class="form-actions">
+              <button type="submit" class="btn-primary" id="saveProjectBtn">💾 Enregistrer le projet</button>
+              <button type="button" class="btn-secondary" id="cancelEditBtn" style="display: none;">Annuler</button>
+            </div>
+          </form>
 
-          <div class="form-group">
-            <label for="formFeatures">Points clés / Puces (une puce par ligne, optionnel)</label>
-            <textarea id="formFeatures" rows="3" placeholder="Point fort 1&#10;Point fort 2&#10;Point fort 3"></textarea>
-          </div>
+          <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 24px 0;">
 
-          <div class="form-actions">
-            <button type="submit" class="btn-primary" id="saveProjectBtn">💾 Enregistrer le projet</button>
-            <button type="button" class="btn-secondary" id="cancelEditBtn" style="display: none;">Annuler</button>
-          </div>
-        </form>
-
-        <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 24px 0;">
-
-        <div class="admin-data-actions">
-          <h4 style="font-size: 1rem; margin-bottom: 8px; color: var(--text-main);">Exporter / Synchroniser vos modifications</h4>
-          <p style="font-size: 0.84rem; color: var(--text-muted); margin-bottom: 14px;">
-            Pour inscrire définitivement vos modifications dans le dépôt GitHub, téléchargez le fichier <code>projects.json</code> généré :
-          </p>
-          <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
-            <button id="downloadJsonBtn" class="btn-secondary">📥 Télécharger projects.json</button>
-            <button id="copyJsonBtn" class="btn-secondary">📋 Copier le JSON</button>
-            <button id="resetDataBtn" class="btn-danger" style="margin-left: auto;">🔄 Réinitialiser par défaut</button>
+          <div class="admin-data-actions">
+            <h4 style="font-size: 1rem; margin-bottom: 8px; color: var(--text-main);">Exporter / Synchroniser les projets</h4>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
+              <button id="downloadJsonBtn" class="btn-secondary">📥 Télécharger projects.json</button>
+              <button id="copyJsonBtn" class="btn-secondary">📋 Copier le JSON</button>
+              <button id="resetDataBtn" class="btn-danger" style="margin-left: auto;">🔄 Réinitialiser les projets</button>
+            </div>
           </div>
         </div>
+
       </div>
     </div>
   </div>
 
-  <script>
+  <!-- Toast notification -->
+  <div id="toastNotification" class="toast-notification">
+    <span id="toastIcon">✅</span>
+    <span id="toastMessage">Modification enregistrée avec succès !</span>
+  </div>
+    </div>
+  </div>
+
+    <script>
     // ================================================================
-    // MOTEUR DYNAMIQUE DU PORTFOLIO (ZERO CODE EN DUR)
+    // MOTEUR ULTRA-DYNAMIQUE : PROFIL, PHOTO & PROJETS SANS CODE
     // ================================================================
+
+    // Données par défaut
+    const defaultProfile = {
+      name: "Nathan HOUNKPADODE",
+      fullName: "Nathan Schalom HOUNKPADODE",
+      badge: "Développeur Logiciel & Systèmes",
+      headline: 'Concepteur d\'applications <span class="highlight">robustes & performantes</span>',
+      bio: "Développeur rigoureux passionné par la <strong>programmation Système & C</strong>, les architectures logicielles propres et le développement Fullstack moderne. Créateur d'applications en production (dont la plateforme spirituelle et mobile <strong>Lecture Quotidienne EEDSC</strong>).",
+      avatar: "avatar.png",
+      email: "nathan.hounkpadode@epitech.eu",
+      phone: "+229 01 91 63 63 13"
+    };
+
+    let currentProfile = JSON.parse(JSON.stringify(window.PORTFOLIO_PROFILE || defaultProfile));
     let allProjects = [];
+
     const categories = window.PORTFOLIO_CATEGORIES || [
       { id: "all", label: "Tous" },
       { id: "perso", label: "⭐ Projet Personnel", btnClass: "filter-perso-btn", badgeClass: "badge-perso", defaultBadge: "⭐ PROJET PERSONNEL" },
@@ -1080,48 +1327,109 @@
     let currentFilter = 'all';
     let searchQuery = '';
 
-    // Initialisation
+    // ================================================================
+    // INITIALISATION GLOBALE
+    // ================================================================
     function initPortfolio() {
-      // 1. Priorité au localStorage (si l'utilisateur a fait des modifications sans code)
+      initProfile();
+      initProjects();
+      setupEventListeners();
+    }
+
+    // Initialisation du Profil
+    function initProfile() {
+      const savedProfile = localStorage.getItem('custom_portfolio_profile');
+      if (savedProfile) {
+        try {
+          currentProfile = JSON.parse(savedProfile);
+        } catch(e) {
+          console.warn('Erreur lecture profil localStorage');
+        }
+      }
+      renderProfileUI();
+    }
+
+    // Affichage dynamique du Profil & Photo
+    function renderProfileUI() {
+      // Photo de profil
+      const avatarImg = document.getElementById('profileAvatarImg');
+      const modalAvatar = document.getElementById('modalAvatarPreview');
+      if (avatarImg) avatarImg.src = currentProfile.avatar;
+      if (modalAvatar) modalAvatar.src = currentProfile.avatar;
+
+      // Textes du profil
+      const badgeText = document.getElementById('profileBadgeText');
+      if (badgeText) badgeText.textContent = currentProfile.badge;
+
+      const headline = document.getElementById('profileHeadline');
+      if (headline) headline.innerHTML = currentProfile.headline;
+
+      const bio = document.getElementById('profileBio');
+      if (bio) bio.innerHTML = currentProfile.bio;
+
+      // Contacts
+      const heroContactBtn = document.getElementById('heroContactBtn');
+      if (heroContactBtn) heroContactBtn.href = 'mailto:' + currentProfile.email;
+
+      const contactEmailBtn = document.getElementById('contactEmailBtn');
+      const contactEmailText = document.getElementById('contactEmailText');
+      if (contactEmailBtn) contactEmailBtn.href = 'mailto:' + currentProfile.email;
+      if (contactEmailText) contactEmailText.textContent = currentProfile.email;
+
+      const contactPhoneBtn = document.getElementById('contactPhoneBtn');
+      const contactPhoneText = document.getElementById('contactPhoneText');
+      if (contactPhoneBtn) contactPhoneBtn.href = 'tel:' + currentProfile.phone.replace(/\s+/g, '');
+      if (contactPhoneText) contactPhoneText.textContent = currentProfile.phone;
+
+      // Remplir le formulaire dans le modal
+      const nameInput = document.getElementById('profileNameInput');
+      const badgeInput = document.getElementById('profileBadgeInput');
+      const headlineInput = document.getElementById('profileHeadlineInput');
+      const bioInput = document.getElementById('profileBioInput');
+      const emailInput = document.getElementById('profileEmailInput');
+      const phoneInput = document.getElementById('profilePhoneInput');
+
+      if (nameInput) nameInput.value = currentProfile.name || '';
+      if (badgeInput) badgeInput.value = currentProfile.badge || '';
+      if (headlineInput) headlineInput.value = (currentProfile.headline || '').replace(/<[^>]*>/g, '');
+      if (bioInput) bioInput.value = (currentProfile.bio || '').replace(/<[^>]*>/g, '');
+      if (emailInput) emailInput.value = currentProfile.email || '';
+      if (phoneInput) phoneInput.value = currentProfile.phone || '';
+    }
+
+    // Initialisation des Projets
+    function initProjects() {
       const stored = localStorage.getItem('custom_portfolio_projects');
       if (stored) {
         try {
           allProjects = JSON.parse(stored);
           renderUI();
-          setupEventListeners();
           return;
-        } catch(e) {
-          console.warn('Erreur lecture localStorage, fallback par défaut');
-        }
+        } catch(e) {}
       }
 
-      // 2. Sinon données par défaut de projects.js
       if (window.PORTFOLIO_PROJECTS && window.PORTFOLIO_PROJECTS.length > 0) {
         allProjects = JSON.parse(JSON.stringify(window.PORTFOLIO_PROJECTS));
         renderUI();
-        setupEventListeners();
       } else {
-        // 3. Fallback fetch HTTP
         fetch('data/projects.json')
           .then(res => res.json())
           .then(data => {
             allProjects = data;
             renderUI();
-            setupEventListeners();
           })
           .catch(err => {
-            console.error('Impossible de charger les projets:', err);
+            console.error('Erreur chargement projets:', err);
           });
       }
     }
 
-    // Rendu global
     function renderUI() {
       renderFilters();
       renderCards();
     }
 
-    // Génération dynamique des boutons de filtres avec comptage en temps réel
+    // Filtres dynamiques avec compteurs
     function renderFilters() {
       const filterBar = document.getElementById('filterBar');
       if (!filterBar) return;
@@ -1151,18 +1459,14 @@
       });
     }
 
-    // Rendu dynamique des cartes de projets
+    // Rendu dynamique des cartes
     function renderCards() {
       const grid = document.getElementById('projectsGrid');
       const noResults = document.getElementById('noResults');
       if (!grid) return;
 
-      // Filtrage
       let filtered = allProjects.filter(p => {
-        // Filtre catégorie
         const matchCat = (currentFilter === 'all') || (p.category === currentFilter);
-        
-        // Filtre recherche textuelle
         let matchSearch = true;
         if (searchQuery.trim() !== '') {
           const q = searchQuery.toLowerCase();
@@ -1172,7 +1476,6 @@
           const badge = (p.badgeText || '').toLowerCase();
           matchSearch = title.includes(q) || desc.includes(q) || tags.includes(q) || badge.includes(q);
         }
-
         return matchCat && matchSearch;
       });
 
@@ -1229,9 +1532,148 @@
       }).join('');
     }
 
-    // Gestionnaires d'événements
+    // Toast de notification
+    function showToast(message, icon = '✅') {
+      const toast = document.getElementById('toastNotification');
+      const iconEl = document.getElementById('toastIcon');
+      const msgEl = document.getElementById('toastMessage');
+      if (!toast) return;
+
+      if (iconEl) iconEl.textContent = icon;
+      if (msgEl) msgEl.textContent = message;
+
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3500);
+    }
+
+    // Gestion du changement de photo par fichier
+    function handlePhotoUpload(file) {
+      if (!file) return;
+      if (!file.type.startsWith('image/')) {
+        alert('Veuillez sélectionner un fichier image valide (PNG, JPG, WebP...).');
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        currentProfile.avatar = e.target.result;
+        renderProfileUI();
+        saveProfile();
+        showToast('Photo de profil mise à jour avec succès !', '📷');
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function saveProfile() {
+      localStorage.setItem('custom_portfolio_profile', JSON.stringify(currentProfile));
+    }
+
+    function saveProjects() {
+      localStorage.setItem('custom_portfolio_projects', JSON.stringify(allProjects));
+    }
+
+    // Configuration des écouteurs
     function setupEventListeners() {
-      // Recherche en direct
+      // 1. Clic direct sur l'avatar du Hero pour changer de photo
+      const heroAvatar = document.getElementById('heroAvatarContainer');
+      const avatarFileInput = document.getElementById('avatarFileInput');
+
+      if (heroAvatar && avatarFileInput) {
+        heroAvatar.addEventListener('click', () => {
+          avatarFileInput.click();
+        });
+
+        avatarFileInput.addEventListener('change', (e) => {
+          if (e.target.files && e.target.files[0]) {
+            handlePhotoUpload(e.target.files[0]);
+          }
+        });
+      }
+
+      // 2. Gestion de la photo dans le Modal
+      const modalChooseBtn = document.getElementById('modalChooseFileBtn');
+      const modalAvatarInput = document.getElementById('modalAvatarFileInput');
+      const modalResetAvatarBtn = document.getElementById('modalResetAvatarBtn');
+      const urlInput = document.getElementById('profileAvatarUrlInput');
+
+      if (modalChooseBtn && modalAvatarInput) {
+        modalChooseBtn.addEventListener('click', () => modalAvatarInput.click());
+        modalAvatarInput.addEventListener('change', (e) => {
+          if (e.target.files && e.target.files[0]) {
+            handlePhotoUpload(e.target.files[0]);
+          }
+        });
+      }
+
+      if (modalResetAvatarBtn) {
+        modalResetAvatarBtn.addEventListener('click', () => {
+          currentProfile.avatar = 'avatar.png';
+          if (urlInput) urlInput.value = '';
+          renderProfileUI();
+          saveProfile();
+          showToast('Photo d\'origine rétablie !', '🔄');
+        });
+      }
+
+      if (urlInput) {
+        urlInput.addEventListener('change', () => {
+          const val = urlInput.value.trim();
+          if (val) {
+            currentProfile.avatar = val;
+            renderProfileUI();
+            saveProfile();
+            showToast('Photo mise à jour via URL !', '🌐');
+          }
+        });
+      }
+
+      // 3. Navigation par Onglets dans le Modal
+      const tabButtons = document.querySelectorAll('.admin-tab-btn');
+      tabButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const targetTabId = btn.getAttribute('data-tab');
+          tabButtons.forEach(b => b.classList.remove('active'));
+          document.querySelectorAll('.admin-tab-pane').forEach(p => p.classList.remove('active'));
+
+          btn.classList.add('active');
+          const targetPane = document.getElementById(targetTabId);
+          if (targetPane) targetPane.classList.add('active');
+        });
+      });
+
+      // 4. Formulaire Profil
+      const profileForm = document.getElementById('profileForm');
+      if (profileForm) {
+        profileForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          currentProfile.name = document.getElementById('profileNameInput').value.trim();
+          currentProfile.badge = document.getElementById('profileBadgeInput').value.trim();
+          currentProfile.headline = document.getElementById('profileHeadlineInput').value.trim();
+          currentProfile.bio = document.getElementById('profileBioInput').value.trim();
+          currentProfile.email = document.getElementById('profileEmailInput').value.trim();
+          currentProfile.phone = document.getElementById('profilePhoneInput').value.trim();
+
+          saveProfile();
+          renderProfileUI();
+          showToast('Profil mis à jour avec succès !');
+        });
+      }
+
+      // 5. Télécharger profile.json
+      const dlProfileBtn = document.getElementById('downloadProfileJsonBtn');
+      if (dlProfileBtn) {
+        dlProfileBtn.addEventListener('click', () => {
+          const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(currentProfile, null, 2));
+          const a = document.createElement('a');
+          a.href = dataStr;
+          a.download = "profile.json";
+          a.click();
+        });
+      }
+
+      // 6. Barre de recherche
       const searchInput = document.getElementById('projectSearch');
       const clearBtn = document.getElementById('clearSearchBtn');
       const resetSearchBtn = document.getElementById('resetSearchBtn');
@@ -1263,16 +1705,16 @@
         });
       }
 
-      // Modal Admin
+      // 7. Modal Admin toggle
       const modal = document.getElementById('adminModal');
       const adminToggleBtn = document.getElementById('adminToggleBtn');
       const closeAdminModalBtn = document.getElementById('closeAdminModalBtn');
       const cancelEditBtn = document.getElementById('cancelEditBtn');
-      const projectForm = document.getElementById('projectForm');
 
       if (adminToggleBtn) {
         adminToggleBtn.addEventListener('click', () => {
-          resetForm();
+          renderProfileUI();
+          resetProjectForm();
           modal.style.display = 'flex';
         });
       }
@@ -1284,12 +1726,11 @@
       }
 
       if (cancelEditBtn) {
-        cancelEditBtn.addEventListener('click', () => {
-          resetForm();
-        });
+        cancelEditBtn.addEventListener('click', () => resetProjectForm());
       }
 
-      // Enregistrement d'un projet (Ajout ou Modification)
+      // 8. Formulaire Projet
+      const projectForm = document.getElementById('projectForm');
       if (projectForm) {
         projectForm.addEventListener('submit', (e) => {
           e.preventDefault();
@@ -1309,7 +1750,6 @@
           const badgeClass = catObj.badgeClass || 'badge-system';
 
           if (id) {
-            // Modification
             const idx = allProjects.findIndex(p => p.id === id);
             if (idx !== -1) {
               allProjects[idx] = {
@@ -1325,7 +1765,6 @@
               };
             }
           } else {
-            // Ajout
             const newProj = {
               id: 'proj-' + Date.now(),
               title,
@@ -1342,15 +1781,15 @@
             allProjects.unshift(newProj);
           }
 
-          saveToLocalStorage();
+          saveProjects();
           renderUI();
           modal.style.display = 'none';
-          resetForm();
-          alert('Projet enregistré avec succès ! Il apparaît immédiatement sur votre page.');
+          resetProjectForm();
+          showToast('Projet enregistré avec succès !');
         });
       }
 
-      // Télécharger le JSON à jour
+      // 9. Télécharger / Copier / Réinitialiser projects.json
       const downloadBtn = document.getElementById('downloadJsonBtn');
       if (downloadBtn) {
         downloadBtn.addEventListener('click', () => {
@@ -1362,38 +1801,31 @@
         });
       }
 
-      // Copier le JSON
       const copyBtn = document.getElementById('copyJsonBtn');
       if (copyBtn) {
         copyBtn.addEventListener('click', () => {
           navigator.clipboard.writeText(JSON.stringify(allProjects, null, 2))
-            .then(() => alert('JSON copié dans le presse-papiers !'))
+            .then(() => showToast('JSON des projets copié !', '📋'))
             .catch(() => alert('Erreur lors de la copie.'));
         });
       }
 
-      // Réinitialiser les données
       const resetBtn = document.getElementById('resetDataBtn');
       if (resetBtn) {
         resetBtn.addEventListener('click', () => {
-          if (confirm('Voulez-vous vraiment réinitialiser le portfolio avec les 30 projets d\'origine ?')) {
+          if (confirm('Voulez-vous vraiment réinitialiser les projets par défaut ?')) {
             localStorage.removeItem('custom_portfolio_projects');
             if (window.PORTFOLIO_PROJECTS) {
               allProjects = JSON.parse(JSON.stringify(window.PORTFOLIO_PROJECTS));
             }
             renderUI();
-            modal.style.display = 'none';
-            alert('Portfolio réinitialisé avec succès !');
+            showToast('Projets réinitialisés avec succès !', '🔄');
           }
         });
       }
     }
 
-    function saveToLocalStorage() {
-      localStorage.setItem('custom_portfolio_projects', JSON.stringify(allProjects));
-    }
-
-    function resetForm() {
+    function resetProjectForm() {
       document.getElementById('formProjectId').value = '';
       document.getElementById('formTitle').value = '';
       document.getElementById('formCategory').value = 'psu';
@@ -1406,10 +1838,16 @@
       document.getElementById('cancelEditBtn').style.display = 'none';
     }
 
-    // Fonctions globales pour édition / suppression
     window.editProject = function(id) {
       const proj = allProjects.find(p => p.id === id);
       if (!proj) return;
+
+      document.querySelectorAll('.admin-tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.admin-tab-pane').forEach(p => p.classList.remove('active'));
+      const projTabBtn = document.querySelector('.admin-tab-btn[data-tab="tab-projects"]');
+      const projPane = document.getElementById('tab-projects');
+      if (projTabBtn) projTabBtn.classList.add('active');
+      if (projPane) projPane.classList.add('active');
 
       document.getElementById('formProjectId').value = proj.id;
       document.getElementById('formTitle').value = proj.title || '';
@@ -1431,12 +1869,12 @@
       const name = proj ? proj.title : 'ce projet';
       if (confirm(`Voulez-vous vraiment supprimer "${name}" ?`)) {
         allProjects = allProjects.filter(p => p.id !== id);
-        saveToLocalStorage();
+        saveProjects();
         renderUI();
+        showToast(`"${name}" a été supprimé.`, '🗑️');
       }
     };
 
-    // Lancer au chargement du DOM
     document.addEventListener('DOMContentLoaded', initPortfolio);
   </script>
 </body>
