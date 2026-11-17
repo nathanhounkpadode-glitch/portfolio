@@ -1,0 +1,69 @@
+[
+  {
+    "id": "all",
+    "label": "Tous"
+  },
+  {
+    "id": "perso",
+    "label": "⭐ Projet Personnel",
+    "btnClass": "filter-perso-btn",
+    "badgeClass": "badge-perso",
+    "defaultBadge": "⭐ PROJET PERSONNEL"
+  },
+  {
+    "id": "psu",
+    "label": "PSU — Système Unix",
+    "btnClass": "",
+    "badgeClass": "badge-psu",
+    "defaultBadge": "Système Unix (PSU)"
+  },
+  {
+    "id": "cpe",
+    "label": "Algorithmes & C",
+    "btnClass": "",
+    "badgeClass": "badge-cpe",
+    "defaultBadge": "Algorithmes & C (CPE)"
+  },
+  {
+    "id": "graphic",
+    "label": "Graphique & CSFML",
+    "btnClass": "",
+    "badgeClass": "badge-graphic",
+    "defaultBadge": "Graphique 2D (CSFML)"
+  },
+  {
+    "id": "mat",
+    "label": "Mathématiques",
+    "btnClass": "",
+    "badgeClass": "badge-mat",
+    "defaultBadge": "Calcul Scientifique"
+  },
+  {
+    "id": "sec",
+    "label": "Cybersécurité",
+    "btnClass": "",
+    "badgeClass": "badge-sec",
+    "defaultBadge": "Cybersécurité"
+  },
+  {
+    "id": "ai",
+    "label": "IA & Data",
+    "btnClass": "",
+    "badgeClass": "badge-ai",
+    "defaultBadge": "IA & Data en C"
+  },
+  {
+    "id": "devops",
+    "label": "DevOps & Cloud",
+    "btnClass": "",
+    "badgeClass": "badge-devops",
+    "defaultBadge": "DevOps & CI/CD"
+  },
+  {
+    "id": "web",
+    "label": "Web & Backend",
+    "btnClass": "",
+    "badgeClass": "badge-web",
+    "defaultBadge": "Backend / API REST"
+  }
+]

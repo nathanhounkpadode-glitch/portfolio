@@ -539,7 +539,278 @@
         justify-content: center;
       }
     }
+
+    /* Projects Toolbar: Search & Admin Button */
+    .projects-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 22px;
+      flex-wrap: wrap;
+    }
+
+    .search-box {
+      position: relative;
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .search-box input {
+      width: 100%;
+      background: rgba(17, 24, 39, 0.85);
+      border: 1px solid var(--border-color);
+      border-radius: 9999px;
+      padding: 11px 40px 11px 18px;
+      color: var(--text-main);
+      font-family: var(--font-main);
+      font-size: 0.92rem;
+      transition: all 0.2s ease;
+      outline: none;
+    }
+
+    .search-box input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+      background: rgba(17, 24, 39, 0.98);
+    }
+
+    .clear-search-btn {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: var(--text-dim);
+      font-size: 1.3rem;
+      cursor: pointer;
+      display: none;
+      padding: 2px;
+      line-height: 1;
+    }
+
+    .clear-search-btn:hover {
+      color: var(--text-main);
+    }
+
+    .btn-admin-mode {
+      background: rgba(59, 130, 246, 0.08);
+      border: 1px dashed rgba(59, 130, 246, 0.4);
+      color: #93c5fd;
+      padding: 10px 18px;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      font-family: var(--font-main);
+    }
+
+    .btn-admin-mode:hover {
+      background: rgba(59, 130, 246, 0.18);
+      border-color: var(--accent);
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(59, 130, 246, 0.25);
+    }
+
+    /* Admin Modal */
+    .admin-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 8, 16, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .admin-modal-content {
+      background: #0f172a;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      max-width: 680px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+    }
+
+    .admin-modal-header {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      background: #0f172a;
+      z-index: 2;
+    }
+
+    .admin-modal-header h3 {
+      font-size: 1.25rem;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .admin-close-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.6rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .admin-close-btn:hover {
+      color: #fff;
+    }
+
+    .admin-modal-body {
+      padding: 24px;
+    }
+
+    .admin-tip {
+      background: rgba(59, 130, 246, 0.1);
+      border-left: 3px solid var(--accent);
+      padding: 12px 16px;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.88rem;
+      color: #bfdbfe;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .admin-form .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    @media (max-width: 600px) {
+      .admin-form .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .admin-form .form-group {
+      margin-bottom: 16px;
+    }
+
+    .admin-form label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .admin-form input,
+    .admin-form select,
+    .admin-form textarea {
+      width: 100%;
+      background: rgba(17, 24, 39, 0.95);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 11px 14px;
+      color: var(--text-main);
+      font-family: var(--font-main);
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+
+    .admin-form input:focus,
+    .admin-form select:focus,
+    .admin-form textarea:focus {
+      border-color: var(--accent);
+    }
+
+    .admin-form .form-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+      align-items: center;
+    }
+
+    .btn-danger {
+      background: rgba(239, 68, 68, 0.15);
+      color: #fca5a5;
+      border: 1px solid rgba(239, 68, 68, 0.35);
+      padding: 9px 18px;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      font-family: var(--font-main);
+    }
+
+    .btn-danger:hover {
+      background: rgba(239, 68, 68, 0.3);
+      color: #fee2e2;
+    }
+
+    .card-actions {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      display: flex;
+      gap: 6px;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .project-card:hover .card-actions {
+      opacity: 1;
+    }
+
+    .card-action-btn {
+      background: rgba(17, 24, 39, 0.85);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 0.82rem;
+      transition: all 0.15s ease;
+    }
+
+    .card-action-btn:hover {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+
+    .card-action-btn.btn-card-del:hover {
+      background: #ef4444;
+      border-color: #ef4444;
+    }
+
+    .no-results {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--text-muted);
+      grid-column: 1 / -1;
+    }
+
   </style>
+  <script src="data/projects.js"></script>
 </head>
 <body>
   <div class="ambient-glow-1"></div>
@@ -592,661 +863,34 @@
     </header>
 
     <!-- Projects Section -->
+        <!-- Projects Section (Totalement Dynamique, Données Découplées) -->
     <section id="projects">
       <div class="section-header">
-        <div class="section-tag">Portfolio & Réalisations</div>
+        <div class="section-tag">Portfolio & Réalisations Dynamiques</div>
         <h2 class="section-title">Mes Projets Réalisés</h2>
       </div>
 
-      <!-- Clean, ordered filters without clutter -->
-      <div class="filter-bar">
-        <button class="filter-btn active" data-filter="all">Tous (30)</button>
-        <button class="filter-btn filter-perso-btn" data-filter="perso">⭐ Projet Personnel (1)</button>
-        <button class="filter-btn" data-filter="psu">PSU — Système Unix (4)</button>
-        <button class="filter-btn" data-filter="cpe">Algorithmes & C (6)</button>
-        <button class="filter-btn" data-filter="graphic">Graphique & CSFML (2)</button>
-        <button class="filter-btn" data-filter="mat">Mathématiques (10)</button>
-        <button class="filter-btn" data-filter="sec">Cybersécurité (2)</button>
-        <button class="filter-btn" data-filter="ai">IA & Data (2)</button>
-        <button class="filter-btn" data-filter="devops">DevOps & Cloud (2)</button>
-        <button class="filter-btn" data-filter="web">Web & Backend (1)</button>
+      <!-- Barre d'outils dynamique : Recherche en direct + Gestionnaire sans code -->
+      <div class="projects-toolbar">
+        <div class="search-box">
+          <input type="text" id="projectSearch" placeholder="🔍 Rechercher un projet, une technologie (C, Docker, Next.js, Python, CSFML...)" autocomplete="off">
+          <button id="clearSearchBtn" class="clear-search-btn" title="Effacer la recherche">×</button>
+        </div>
+        <button id="adminToggleBtn" class="btn-admin-mode" title="Ajouter ou modifier des projets sans coder">
+          ⚙️ Gérer les projets (Sans code)
+        </button>
       </div>
 
-      <div class="projects-grid">
+      <!-- Filtres dynamiques calculés et générés automatiquement -->
+      <div class="filter-bar" id="filterBar"></div>
 
-        <!-- ==================== PROJETS PERSONNELS ==================== -->
-        <!-- 1. EEDSC -->
-        <div class="project-card featured-perso" data-category="perso">
-          <div class="project-top">
-            <div class="project-meta">
-              <span class="project-category-badge badge-perso">⭐ PROJET PERSONNEL</span>
-              <span class="project-date">Nov. 2026 • En Production</span>
-            </div>
-            <h3 class="project-title">
-              📖 Lecture Quotidienne EEDSC
-              <span style="font-size: 0.82rem; color: #fbbf24; font-weight: 600; display: block; margin-top: 4px;">[ Projet Personnel & Développement Indépendant ]</span>
-            </h3>
-            <p class="project-desc">
-              <strong>Projet personnel & initiative originale</strong> : Plateforme spirituelle et communautaire complète conçue et développée de A à Z pour l'<em>Église Évangélique de la Délivrance et du Salut en Christ</em> (Cotonou). Architecture Next.js (App Router) et déclinaison mobile hybride via Capacitor.
-            </p>
-            <ul class="project-feature-list">
-              <li><strong>2 modes de lecture</strong> : Linéaire (Genèse à Apocalypse) et Mixte (Alliance Quotidienne).</li>
-              <li><strong>4 plans personnalisés</strong> : Immersion Réveil (3 mois), 6 mois, 9 mois et 1 an.</li>
-              <li><strong>Multilingue 4 langues avec audio</strong> : Français (Louis Segond), Anglais (KJV), Fongbé (<em>Biblu Wiwe gbè</em>) et Goun (<em>Wéyé Wéwé gbè</em>).</li>
-              <li><strong>Mur de Prière & Intercession</strong> : Requêtes communautaires avec bouton interactif « Je prie 🙏 ».</li>
-              <li><strong>Partage WhatsApp</strong> : Envoi automatisé du verset du jour en un clic.</li>
-            </ul>
-          </div>
-          <div class="project-tags">
-            <span class="tag tag-gold" style="font-weight: 700;">★ PROJET PERSONNEL</span>
-            <span class="tag">Next.js 14</span>
-            <span class="tag">TypeScript</span>
-            <span class="tag">Capacitor (Mobile)</span>
-            <span class="tag">Tailwind CSS</span>
-            <span class="tag">Multilingue (4 langues)</span>
-          </div>
-        </div>
+      <!-- Grille des projets générée dynamiquement depuis data/projects.json -->
+      <div class="projects-grid" id="projectsGrid"></div>
 
-        <!-- ==================== SYSTÈME & C ==================== -->
-        <!-- 3. Minishell 1 & 2 -->
-        <div class="project-card" data-category="psu">
-          <div class="project-top">
-            <div class="project-meta">
-              <span class="project-category-badge badge-psu">Système Unix (PSU)</span>
-              <span class="project-date">Juin - Juil. 2026</span>
-            </div>
-            <h3 class="project-title">Minishell 1 & 2 (Interpréteur UNIX)</h3>
-            <p class="project-desc">
-              Développement en C d'un interpréteur de commandes complet conforme aux spécifications POSIX. Parsing syntaxique, gestion des pipes chaînés (<code>|</code>), redirections d'entrées/sorties (<code>&lt;</code>, <code>&gt;</code>, <code>&gt;&gt;</code>), signaux POSIX et builtins natifs (<code>cd</code>, <code>env</code>, <code>setenv</code>).
-            </p>
-          </div>
-          <div class="project-tags">
-            <span class="tag">Langage C</span>
-            <span class="tag">POSIX</span>
-            <span class="tag">Syscalls (fork, execve, pipe)</span>
-            <span class="tag">Gestion Mémoire</span>
-            <span class="tag">Valgrind</span>
-          </div>
-        </div>
-
-        <!-- 4. Corewar : Robot Factory -->
-        <div class="project-card" data-category="cpe">
-          <div class="project-top">
-            <div class="project-meta">
-              <span class="project-category-badge badge-cpe">Compilation & C (CPE)</span>
-              <span class="project-date">Août 2026</span>
-            </div>
-            <h3 class="project-title">Corewar : Robot Factory (Assembleur C)</h3>
-            <p class="project-desc">
-              Compilateur / assembleur complet en C pour le jeu Corewar. Analyse lexicale et syntaxique de programmes assembleurs (<code>.s</code>), encodage binaire des instructions et registres de la machine virtuelle, calcul des offsets d'adressage et génération de fichiers bytecode exécutables (<code>.cor</code>).
-            </p>
-          </div>
-          <div class="project-tags">
-            <span class="tag">Langage C</span>
-            <span class="tag">Assembleur</span>
-            <span class="tag">Bytecode Compiler</span>
-            <span class="tag">Parsing Binaire</span>
-            <span class="tag">Makefile</span>
-          </div>
-        </div>
-
-        <!-- 5. MyTop -->
-        <div class="project-card" data-category="psu">
-          <div class="project-top">
-            <div class="project-meta">
-              <span class="project-category-badge badge-psu">Système Linux (PSU)</span>
-              <span class="project-date">Mai - Juin 2026</span>
-            </div>
-            <h3 class="project-title">MyTop — Moniteur Système Linux en C</h3>
-            <p class="project-desc">
-              Recréation de l'utilitaire système <code>top</code> sous Linux en C. Extraction et analyse en temps réel des métriques du système de fichiers virtuel <code>/proc</code> (état des processus, utilisation CPU, mémoire physique et swap, Uptime, load averages) avec affichage interactif dynamique.
-            </p>
-          </div>
-          <div class="project-tags">
-            <span class="tag">Langage C</span>
-            <span class="tag">Système Linux</span>
-            <span class="tag">Parsing /proc</span>
-            <span class="tag">Surveillance CPU & RAM</span>
-            <span class="tag">Syscalls</span>
-          </div>
-        </div>
-
-        <!-- 6. MySudo -->
-        <div class="project-card" data-category="psu">
-          <div class="project-top">
-            <div class="project-meta">
-              <span class="project-category-badge badge-psu">Système & Sécurité (PSU)</span>
-              <span class="project-date">Avril 2026</span>
-            </div>
-            <h3 class="project-title">MySudo — Délégation de Privilèges Root</h3>
-            <p class="project-desc">
-              Re-implémentation sécurisée de l'utilitaire système <code>sudo</code> sous Linux en langage C (binaire SetUID root). Gestion et vérification des permissions utilisateurs, lecture sécurisée des hachages de mots de passe dans <code>/etc/shadow</code> et exécution sous privilèges élevés.
-            </p>
-          </div>
-          <div class="project-tags">
-            <span class="tag">Langage C</span>
-            <span class="tag">Sécurité Linux</span>
-            <span class="tag">SetUID Root</span>
-            <span class="tag">/etc/shadow</span>
-            <span class="tag">Syscalls Unix</span>
-          </div>
-        </div>
-
-        <!-- 7. MyLs -->
-        <div class="project-card" data-category="psu">
-          <div class="project-top">
-            <div class="project-meta">
-              <span class="project-category-badge badge-psu">Système Unix (PSU)</span>
-              <span class="project-date">Mars 2026</span>
-            </div>
-            <h3 class="project-title">MyLs — Explorateur de Fichiers POSIX</h3>
-            <p class="project-desc">
-              Ré-implémentation complète de la commande UNIX <code>ls</code> en C. Utilisation des appels système <code>stat</code>, <code>lstat</code> et <code>opendir/readdir</code>. Prise en charge des drapeaux classiques (<code>-l, -a, -R, -d, -r, -t</code>), droits d'accès, utilisateurs, groupes et formatage temporel.
-            </p>
-          </div>
-          <div class="project-tags">
-            <span class="tag">Langage C</span>
-            <span class="tag">POSIX Stat</span>
-            <span class="tag">Système de Fichiers</span>
-            <span class="tag">Flags UNIX</span>
-          </div>
-        </div>
-
-        <!-- 8. Organized -->
-        <div class="project-card" data-category="cpe">
-          <div class="project-top">
-            <div class="project-meta">
-              <span class="project-category-badge badge-cpe">Algorithmes & C (CPE)</span>
-              <span class="project-date">Avril - Juin 2026</span>
-            </div>
-            <h3 class="project-title">Organized — Gestionnaire & Tri Dynamique</h3>
-            <p class="project-desc">
-              Système de gestion d'inventaire interactif développé en C. Implémentation de structures de listes chaînées génériques en mémoire, parsing de commandes en ligne et algorithmes de tri récursif multi-critères dynamiques (QuickSort / MergeSort).
-            </p>
-          </div>
-          <div class="project-tags">
-            <span class="tag">Langage C</span>
-            <span class="tag">Listes Chaînées Génériques</span>
-            <span class="tag">Tri Dynamique</span>
-            <span class="tag">Pointeurs de fonctions</span>
-            <span class="tag">Valgrind</span>
-          </div>
-        </div>
-
-        <!-- 9. Setting Up -->
-        <div class="project-card" data-category="cpe">
-          <div class="project-top">
-            <div class="project-meta">
-              <span class="project-category-badge badge-cpe">Prog. Dynamique (CPE)</span>
-              <span class="project-date">Mars 2026</span>
-            </div>
-            <h3 class="project-title">Setting Up — Plus Grand Carré 2D</h3>
-            <p class="project-desc">
-              Algorithme de programmation dynamique en C pour identifier le plus grand carré disponible sur une grille 2D encombrée d'obstacles. Traitement haute vitesse optimisé pour des matrices comptant des millions de cases sans surcharge mémoire.
-            </p>
-          </div>
-          <div class="project-tags">
-            <span class="tag">Langage C</span>
-            <span class="tag">Programmation Dynamique</span>
-            <span class="tag">Optimisation Matricielle</span>
-            <span class="tag">Algorithmique</span>
-          </div>
-        </div>
-
-        <!-- 10. Secured -->
-        <div class="project-card" data-category="cpe">
-          <div class="project-top">
-            <div class="project-meta">
-              <span class="project-category-badge badge-cpe">Structures & C (CPE)</span>
-              <span class="project-date">Juin 2026</span>
-            </div>
-            <h3 class="project-title">Secured — Bibliothèque Hash Table</h3>
-            <p class="project-desc">
-              Conception d'une bibliothèque dynamique de table de hachage en langage C (<code>libhashtable.a</code>) implémentant l'algorithme DJB2. Gestion rigoureuse de l'allocation dynamique et des collisions, validée à 100% sans aucune fuite mémoire avec Valgrind.
-            </p>
-          </div>
-          <div class="project-tags">
-            <span class="tag">Langage C</span>
-            <span class="tag">Algorithme DJB2</span>
-            <span class="tag">Structure de Données</span>
-            <span class="tag">Valgrind</span>
-            <span class="tag">Makefile</span>
-          </div>
-        </div>
-
-        <!-- 11. Amazed -->
-        <div class="project-card" data-category="cpe">
-          <div class="project-top">
-            <div class="project-meta">
-              <span class="project-category-badge badge-cpe">Graphes & Algorithmes (CPE)</span>
-              <span class="project-date">Juil. 2026</span>
-            </div>
-            <h3 class="project-title">Amazed — Résolveur de Labyrinthes</h3>
-            <p class="project-desc">
-              Moteur algorithmique haute performance de recherche de chemin optimal dans des réseaux de salles et galeries complexes (problème d'écoulement et théorie des graphes). Optimisation des temps de parcours et allocation dynamique minimale (BFS / Dijkstra).
-            </p>
-          </div>
-          <div class="project-tags">
-            <span class="tag">Langage C</span>
-            <span class="tag">Théorie des Graphes</span>
-            <span class="tag">BFS / Dijkstra</span>
-            <span class="tag">Algorithmique</span>
-          </div>
-        </div>
-
-        <!-- 12. My_Printf & Mini_Printf -->
-        <div class="project-card" data-category="cpe">
-          <div class="project-top">
-            <div class="project-meta">
-              <span class="project-category-badge badge-cpe">Algorithmes & C (CPE)</span>
-              <span class="project-date">Fév. - Mars 2026</span>
-            </div>
-            <h3 class="project-title">My_Printf & Mini_Printf (Recréation C)</h3>
-            <p class="project-desc">
-              Recréation fidèle de la fonction système <code>printf</code> de la bibliothèque standard en C. Gestion poussée des arguments variadiques (<code>stdarg.h</code>), spécificateurs de conversion (<code>%s, %d, %i, %c, %x, %X, %o, %u, %p, %%</code>), drapeaux de formatage, padding et bufferisation d'affichage.
-            </p>
-          </div>
-          <div class="project-tags">
-            <span class="tag">Langage C</span>
-            <span class="tag">Variadic Arguments (stdarg)</span>
-            <span class="tag">Conversion Binaire/Hexa</span>
-            <span class="tag">Bufferisation</span>
-          </div>
-        </div>
-
-        <!-- 13. MyRadar -->
-        <div class="project-card" data-category="graphic">
-          <div class="project-top">
-            <div class="project-meta">
-              <span class="project-category-badge badge-graphic">Graphique 2D (CSFML)</span>
-              <span class="project-date">Mai - Juin 2026</span>
-            </div>
-            <h3 class="project-title">MyRadar — Contrôle Aérien 2D</h3>
-            <p class="project-desc">
-              Simulateur interactif de trafic aérien en temps réel développé en C avec la bibliothèque CSFML. Gestion fluide de centaines d'avions avec détection optimisée de collisions grâce à un algorithme de partitionnement spatial (Quadtree) à 60 FPS constants.
-            </p>
-          </div>
-          <div class="project-tags">
-            <span class="tag">Langage C</span>
-            <span class="tag">CSFML</span>
-            <span class="tag">Quadtree</span>
-            <span class="tag">Calculs Vectoriels</span>
-            <span class="tag">60 FPS</span>
-          </div>
-        </div>
-
-        <!-- 14. MyHunter -->
-        <div class="project-card" data-category="graphic">
-          <div class="project-top">
-            <div class="project-meta">
-              <span class="project-category-badge badge-graphic">Graphique 2D (CSFML)</span>
-              <span class="project-date">Mars - Avril 2026</span>
-            </div>
-            <h3 class="project-title">MyHunter — Jeu Vidéo 2D en C</h3>
-            <p class="project-desc">
-              Jeu vidéo interactif en C utilisant la bibliothèque CSFML (inspiré de Duck Hunt). Architecture basée sur une boucle événementielle cadencée à 60 FPS constants, gestion des sprites et textures, détection de collisions curseur/cibles et système de score dynamique.
-            </p>
-          </div>
-          <div class="project-tags">
-            <span class="tag">Langage C</span>
-            <span class="tag">CSFML</span>
-            <span class="tag">Game Loop</span>
-            <span class="tag">Animations 2D</span>
-            <span class="tag">60 FPS</span>
-          </div>
-        </div>
-
-        <!-- ==================== CYBERSÉCURITÉ ==================== -->
-        <!-- 15. Obsidian -->
-        <div class="project-card" data-category="sec">
-          <div class="project-top">
-            <div class="project-meta">
-              <span class="project-category-badge badge-sec">Cybersécurité / Audit</span>
-              <span class="project-date">Sept. - Oct. 2026</span>
-            </div>
-            <h3 class="project-title">Obsidian — Audit de Sécurité White-Box & Black-Box</h3>
-            <p class="project-desc">
-              Audit méthodique et approfondi de sécurité logicielle réalisé en double approche boîte noire et boîte blanche. Analyse statique de code source (SAST), modélisation des menaces, identification des vulnérabilités critiques et rédaction des rapports d'audit et plans de remédiation conformes OWASP.
-            </p>
-          </div>
-          <div class="project-tags">
-            <span class="tag">Audit White-Box</span>
-            <span class="tag">Audit Black-Box</span>
-            <span class="tag">SAST Code Review</span>
-            <span class="tag">Analyse de Menaces</span>
-            <span class="tag">Rapport d'Audit</span>
-          </div>
-        </div>
-
-        <!-- 16. Hack&Juice -->
-        <div class="project-card" data-category="sec">
-          <div class="project-top">
-            <div class="project-meta">
-              <span class="project-category-badge badge-sec">Cybersécurité / Pentest</span>
-              <span class="project-date">Août 2026</span>
-            </div>
-            <h3 class="project-title">Hack&Juice — Test d'Intrusion & Exploitation Web</h3>
-            <p class="project-desc">
-              Campagne de test d'intrusion web offensif couvrant l'ensemble du spectre OWASP Top 10. Exploitation pratique d'injections SQL & NoSQL, contournement de mécanismes d'authentification et de CAPTCHA, falsification de jetons cryptographiques, exploitation de Null Bytes et analyse de fuites de données sensibles.
-            </p>
-          </div>
-          <div class="project-tags">
-            <span class="tag">Pentesting Web</span>
-            <span class="tag">OWASP Top 10</span>
-            <span class="tag">Injections SQL/NoSQL</span>
-            <span class="tag">Burp Suite</span>
-            <span class="tag">Bypass CAPTCHA</span>
-          </div>
-        </div>
-
-        <!-- ==================== IA & MACHINE LEARNING ==================== -->
-        <!-- 17. Cuddle -->
-        <div class="project-card" data-category="ai">
-          <div class="project-top">
-            <div class="project-meta">
-              <span class="project-category-badge badge-ai">IA & Data en C</span>
-              <span class="project-date">Juil. - Août 2026</span>
-            </div>
-            <h3 class="project-title">Cuddle — Bibliothèque DataFrame & IA en C</h3>
-            <p class="project-desc">
-              Conception d'une bibliothèque native en langage C (<code>libcuddle.a</code>) pour la manipulation de DataFrames et données tabulaires pour le Machine Learning (équivalent de Pandas en C). Lecture/écriture de fichiers CSV (<code>df_read_csv</code>, <code>df_write_csv</code>), inspection de structure (<code>df_head</code>, <code>df_tail</code>, <code>df_shape</code>) et gestion mémoire haute performance.
-            </p>
-          </div>
-          <div class="project-tags">
-            <span class="tag">Langage C</span>
-            <span class="tag">DataFrames en C</span>
-            <span class="tag">Parsing CSV</span>
-            <span class="tag">Prétraitement IA</span>
-            <span class="tag">libcuddle.a</span>
-          </div>
-        </div>
-
-        <!-- 18. TARDIS -->
-        <div class="project-card" data-category="ai">
-          <div class="project-top">
-            <div class="project-meta">
-              <span class="project-category-badge badge-ai">Machine Learning</span>
-              <span class="project-date">Sept. - Oct. 2026</span>
-            </div>
-            <h3 class="project-title">TARDIS — Analyse Prédictive & ML</h3>
-            <p class="project-desc">
-              Dashboard interactif et entraînement d'un modèle de Machine Learning pour l'anticipation de flux de trafic. Analyse exploratoire approfondie (EDA), nettoyage et ingénierie de variables, avec restitution graphique en temps réel sous Streamlit.
-            </p>
-          </div>
-          <div class="project-tags">
-            <span class="tag">Python</span>
-            <span class="tag">Scikit-learn</span>
-            <span class="tag">Pandas / NumPy</span>
-            <span class="tag">Streamlit</span>
-          </div>
-        </div>
-
-        <!-- ==================== DEVOPS & INFRA ==================== -->
-        <!-- 19. Popeye -->
-        <div class="project-card" data-category="devops">
-          <div class="project-top">
-            <div class="project-meta">
-              <span class="project-category-badge badge-devops">DevOps & Conteneurs</span>
-              <span class="project-date">Juil. 2026</span>
-            </div>
-            <h3 class="project-title">Popeye — Orchestration Micro-Services Docker</h3>
-            <p class="project-desc">
-              Conteneurisation complète et orchestration d'une architecture micro-services distribuée (Poll, Redis, Worker, PostgreSQL, Result). Écriture de Dockerfiles optimisés multi-stage et orchestration globale via Docker Compose avec isolation réseau étanche et gestion sécurisée des variables d'environnement.
-            </p>
-          </div>
-          <div class="project-tags">
-            <span class="tag">Docker</span>
-            <span class="tag">Docker Compose</span>
-            <span class="tag">Micro-services</span>
-            <span class="tag">Multi-stage Build</span>
-            <span class="tag">Réseaux Isolés</span>
-          </div>
-        </div>
-
-        <!-- 20. Chocolatine -->
-        <div class="project-card" data-category="devops">
-          <div class="project-top">
-            <div class="project-meta">
-              <span class="project-category-badge badge-devops">CI/CD & Automatisation</span>
-              <span class="project-date">Août 2026</span>
-            </div>
-            <h3 class="project-title">Chocolatine — Pipeline CI/CD GitHub Actions</h3>
-            <p class="project-desc">
-              Automatisation complète du cycle d'intégration continue via GitHub Actions. Définition de workflows rigoureux : analyse statique et vérification du Coding Style, compilation multi-cible sans warnings et exécution automatisée des suites de tests unitaires à chaque push et pull request.
-            </p>
-          </div>
-          <div class="project-tags">
-            <span class="tag">GitHub Actions</span>
-            <span class="tag">CI/CD Pipeline</span>
-            <span class="tag">Automatisation</span>
-            <span class="tag">Tests & Linting</span>
-            <span class="tag">Makefile</span>
-          </div>
-        </div>
-
-        <!-- ==================== WEB & BACKEND ==================== -->
-        <!-- 20. EpyTodo -->
-        <div class="project-card" data-category="web">
-          <div class="project-top">
-            <div class="project-meta">
-              <span class="project-category-badge badge-web">Backend / API REST</span>
-              <span class="project-date">Sept. 2026</span>
-            </div>
-            <h3 class="project-title">EpyTodo — API REST Modulaire</h3>
-            <p class="project-desc">
-              Application de gestion de tâches avec API REST sécurisée. Conception en couches modulaires (routes, contrôleurs, middlewares), authentification avec JSON Web Tokens (JWT), validation des requêtes et persistance sous base relationnelle MySQL.
-            </p>
-          </div>
-          <div class="project-tags">
-            <span class="tag">TypeScript</span>
-            <span class="tag">Node.js</span>
-            <span class="tag">Express</span>
-            <span class="tag">MySQL</span>
-            <span class="tag">JWT & Bcrypt</span>
-          </div>
-        </div>
-
-        <!-- ==================== PROJETS MATHÉMATIQUES DÉTAILLÉS ==================== -->
-        <!-- 21. 101pong -->
-        <div class="project-card" data-category="mat">
-          <div class="project-top">
-            <div class="project-meta">
-              <span class="project-category-badge badge-mat">Calcul Scientifique</span>
-              <span class="project-date">Mars 2026</span>
-            </div>
-            <h3 class="project-title">101pong — Cinématique & Vecteurs 3D</h3>
-            <p class="project-desc">
-              Modélisation physique en espace tridimensionnel de la trajectoire d'une balle. Calcul des coordonnées cartésiennes au temps $t+n$, du vecteur vitesse, prédiction de l'impact avec le plan de la batte et calcul précis de l'angle d'incidence en degrés.
-            </p>
-          </div>
-          <div class="project-tags">
-            <span class="tag">Python</span>
-            <span class="tag">Cinématique 3D</span>
-            <span class="tag">Calcul Vectoriel</span>
-            <span class="tag">Géométrie Espace</span>
-          </div>
-        </div>
-
-        <!-- 22. 102architect -->
-        <div class="project-card" data-category="mat">
-          <div class="project-top">
-            <div class="project-meta">
-              <span class="project-category-badge badge-mat">Algèbre Linéaire</span>
-              <span class="project-date">Mars - Avril 2026</span>
-            </div>
-            <h3 class="project-title">102architect — Transformations Géométriques 2D</h3>
-            <p class="project-desc">
-              Moteur de calcul de transformations affines du plan en coordonnées homogènes. Implémentation des matrices élémentaires (translation, homothétie, rotation, symétrie axiale), composition par produit matriciel 3×3 et projection des coordonnées de points.
-            </p>
-          </div>
-          <div class="project-tags">
-            <span class="tag">Python</span>
-            <span class="tag">Coordonnées Homogènes</span>
-            <span class="tag">Produit Matriciel</span>
-            <span class="tag">Transformations Affines</span>
-          </div>
-        </div>
-
-        <!-- 23. 103cipher -->
-        <div class="project-card" data-category="mat">
-          <div class="project-top">
-            <div class="project-meta">
-              <span class="project-category-badge badge-mat">Cryptographie</span>
-              <span class="project-date">Avril 2026</span>
-            </div>
-            <h3 class="project-title">103cipher — Chiffrement Matriciel de Hill</h3>
-            <p class="project-desc">
-              Système cryptographique de chiffrement et déchiffrement polygraphique basé sur les matrices inversibles. Construction dynamique de la matrice clé carrée, calcul du déterminant, inversion matricielle modulaire et multiplication matrice-vecteur.
-            </p>
-          </div>
-          <div class="project-tags">
-            <span class="tag">Python / C</span>
-            <span class="tag">Chiffrement de Hill</span>
-            <span class="tag">Inversion de Matrice</span>
-            <span class="tag">Arithmétique Modulaire</span>
-          </div>
-        </div>
-
-        <!-- 24. 104neutrinos -->
-        <div class="project-card" data-category="mat">
-          <div class="project-top">
-            <div class="project-meta">
-              <span class="project-category-badge badge-mat">Statistiques</span>
-              <span class="project-date">Avril 2026</span>
-            </div>
-            <h3 class="project-title">104neutrinos — Statistiques en Flux Continu</h3>
-            <p class="project-desc">
-              Traitement statistique en temps réel d'un flux continu de données physiques. Calcul en ligne et actualisation dynamique sans réallocation des métriques : moyenne arithmétique, moyenne quadratique (RMS), moyenne harmonique et écart-type (variance).
-            </p>
-          </div>
-          <div class="project-tags">
-            <span class="tag">Python</span>
-            <span class="tag">Moyenne Quadratique (RMS)</span>
-            <span class="tag">Écart-Type</span>
-            <span class="tag">Flux Continu</span>
-          </div>
-        </div>
-
-        <!-- 25. 105demography -->
-        <div class="project-card" data-category="mat">
-          <div class="project-top">
-            <div class="project-meta">
-              <span class="project-category-badge badge-mat">Analyse de Données</span>
-              <span class="project-date">Mai 2026</span>
-            </div>
-            <h3 class="project-title">105demography — Régressions & Extrapolation</h3>
-            <p class="project-desc">
-              Modélisation prédictive de populations mondiales à partir des données démographiques de l'ONU. Ajustement par la méthode des moindres carrés (Fit I & Fit II), calcul du coefficient de corrélation linéaire de Pearson et extrapolation à l'horizon 2050.
-            </p>
-          </div>
-          <div class="project-tags">
-            <span class="tag">Python</span>
-            <span class="tag">Moindres Carrés</span>
-            <span class="tag">Corrélation de Pearson</span>
-            <span class="tag">Extrapolation</span>
-          </div>
-        </div>
-
-        <!-- 26. 106bombyx -->
-        <div class="project-card" data-category="mat">
-          <div class="project-top">
-            <div class="project-meta">
-              <span class="project-category-badge badge-mat">Systèmes Dynamiques</span>
-              <span class="project-date">Juin - Juil. 2026</span>
-            </div>
-            <h3 class="project-title">106bombyx — Modèle Logistique & Chaos</h3>
-            <p class="project-desc">
-              Simulation mathématique de dynamique de population via la suite logistique de Verhulst. Calcul des états d'équilibre, détection des cycles et bifurcations périodiques et génération de données pour le tracé du diagramme de bifurcation du chaos.
-            </p>
-          </div>
-          <div class="project-tags">
-            <span class="tag">Python</span>
-            <span class="tag">Suite Logistique</span>
-            <span class="tag">Théorie du Chaos</span>
-            <span class="tag">Bifurcations</span>
-          </div>
-        </div>
-
-        <!-- 27. 107transfer -->
-        <div class="project-card" data-category="mat">
-          <div class="project-top">
-            <div class="project-meta">
-              <span class="project-category-badge badge-mat">Traitement Signal</span>
-              <span class="project-date">Juil. 2026</span>
-            </div>
-            <h3 class="project-title">107transfer — Fonctions de Transfert</h3>
-            <p class="project-desc">
-              Analyse de transmission de signaux dans des composants électroniques montés en cascade. Évaluation d'expressions rationnelles de polynômes (numérateurs / dénominateurs) et calcul de la réponse en fréquence globale du système pour $x \in [0, 1]$.
-            </p>
-          </div>
-          <div class="project-tags">
-            <span class="tag">Python</span>
-            <span class="tag">Fonctions de Transfert</span>
-            <span class="tag">Polynômes</span>
-            <span class="tag">Traitement du Signal</span>
-          </div>
-        </div>
-
-        <!-- 28. 108trigo -->
-        <div class="project-card" data-category="mat">
-          <div class="project-top">
-            <div class="project-meta">
-              <span class="project-category-badge badge-mat">Calcul Matriciel</span>
-              <span class="project-date">Juil. - Août 2026</span>
-            </div>
-            <h3 class="project-title">108trigo — Trigonométrie & Exponentielle Matricielle</h3>
-            <p class="project-desc">
-              Calcul de fonctions analytiques appliquées à des matrices carrées d'ordre $n$ ($\cos, \sin, \cosh, \sinh, \exp$). Algorithme d'approximation numérique par développement en séries entières de Taylor jusqu'au seuil de convergence ($10^{-7}$).
-            </p>
-          </div>
-          <div class="project-tags">
-            <span class="tag">Python</span>
-            <span class="tag">Séries de Taylor</span>
-            <span class="tag">Exponentielle Matricielle</span>
-            <span class="tag">Algèbre Linéaire</span>
-          </div>
-        </div>
-
-        <!-- 29. 109titration -->
-        <div class="project-card" data-category="mat">
-          <div class="project-top">
-            <div class="project-meta">
-              <span class="project-category-badge badge-mat">Analyse Numérique</span>
-              <span class="project-date">Août 2026</span>
-            </div>
-            <h3 class="project-title">109titration — Dérivation Discrète & Dosage Chimique</h3>
-            <p class="project-desc">
-              Détermination automatique du point d'équivalence d'un titrage acido-basique. Calcul des dérivées première et seconde discrètes par différences finies centrées, interpolation polynomiale locale et localisation précise du zéro de la dérivée seconde.
-            </p>
-          </div>
-          <div class="project-tags">
-            <span class="tag">Python</span>
-            <span class="tag">Dérivée Discrète</span>
-            <span class="tag">Différences Finies</span>
-            <span class="tag">Interpolation</span>
-          </div>
-        </div>
-
-        <!-- 30. 110borwein -->
-        <div class="project-card" data-category="mat">
-          <div class="project-top">
-            <div class="project-meta">
-              <span class="project-category-badge badge-mat">Calcul Intégral</span>
-              <span class="project-date">Août 2026</span>
-            </div>
-            <h3 class="project-title">110borwein — Méthodes d'Intégration Numérique</h3>
-            <p class="project-desc">
-              Calcul numérique haute précision des intégrales de Borwein $\int_0^\infty \prod \frac{\sin(x/a_k)}{x/a_k} dx$. Implémentation comparative de trois schémas d'intégration numérique : méthode des rectangles (point milieu), méthode des trapèzes et règle de Simpson.
-            </p>
-          </div>
-          <div class="project-tags">
-            <span class="tag">Python</span>
-            <span class="tag">Intégration Numérique</span>
-            <span class="tag">Règle de Simpson</span>
-            <span class="tag">Méthode des Trapèzes</span>
-          </div>
-        </div>
-
+      <!-- État vide -->
+      <div id="noResults" class="no-results" style="display: none;">
+        <p style="font-size: 1.1rem; margin-bottom: 8px;">🔍 Aucun projet ne correspond à vos critères.</p>
+        <button id="resetSearchBtn" class="btn-secondary" style="margin-top: 10px;">Réinitialiser la recherche</button>
       </div>
     </section>
 
@@ -1330,32 +974,470 @@
     </footer>
   </div>
 
+    <!-- Modal de Gestion Dynamique des Projets (Sans coder) -->
+  <div id="adminModal" class="admin-modal" style="display: none;">
+    <div class="admin-modal-content">
+      <div class="admin-modal-header">
+        <h3>⚙️ Gestionnaire Dynamique de Projets</h3>
+        <button id="closeAdminModalBtn" class="admin-close-btn">&times;</button>
+      </div>
+      <div class="admin-modal-body">
+        <div class="admin-tip">
+          💡 <strong>Zéro code en dur</strong> : Vous pouvez ajouter un nouveau projet ou modifier un projet existant ici. Vos modifications s'affichent instantanément en direct sur le portfolio !
+        </div>
+        
+        <form id="projectForm" class="admin-form">
+          <input type="hidden" id="formProjectId" value="">
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="formTitle">Titre du projet *</label>
+              <input type="text" id="formTitle" required placeholder="Ex: Mon Super Projet">
+            </div>
+            <div class="form-group">
+              <label for="formCategory">Catégorie *</label>
+              <select id="formCategory" required>
+                <option value="perso">⭐ Projet Personnel</option>
+                <option value="psu">PSU — Système Unix</option>
+                <option value="cpe">Algorithmes & C</option>
+                <option value="graphic">Graphique & CSFML</option>
+                <option value="mat">Mathématiques</option>
+                <option value="sec">Cybersécurité</option>
+                <option value="ai">IA & Data</option>
+                <option value="devops">DevOps & Cloud</option>
+                <option value="web">Web & Backend</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="formDate">Date / Période *</label>
+              <input type="text" id="formDate" required placeholder="Ex: Nov. 2026">
+            </div>
+            <div class="form-group">
+              <label for="formBadge">Badge / Domaine (optionnel)</label>
+              <input type="text" id="formBadge" placeholder="Ex: Système Unix, Fullstack...">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="formDesc">Description détaillée *</label>
+            <textarea id="formDesc" rows="3" required placeholder="Description détaillée du projet et contexte de réalisation..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="formTags">Technologies / Tags (séparés par des virgules) *</label>
+            <input type="text" id="formTags" required placeholder="Ex: C, Linux, POSIX, Docker, Git">
+          </div>
+
+          <div class="form-group">
+            <label for="formFeatures">Points clés / Puces (une puce par ligne, optionnel)</label>
+            <textarea id="formFeatures" rows="3" placeholder="Point fort 1&#10;Point fort 2&#10;Point fort 3"></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn-primary" id="saveProjectBtn">💾 Enregistrer le projet</button>
+            <button type="button" class="btn-secondary" id="cancelEditBtn" style="display: none;">Annuler</button>
+          </div>
+        </form>
+
+        <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 24px 0;">
+
+        <div class="admin-data-actions">
+          <h4 style="font-size: 1rem; margin-bottom: 8px; color: var(--text-main);">Exporter / Synchroniser vos modifications</h4>
+          <p style="font-size: 0.84rem; color: var(--text-muted); margin-bottom: 14px;">
+            Pour inscrire définitivement vos modifications dans le dépôt GitHub, téléchargez le fichier <code>projects.json</code> généré :
+          </p>
+          <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
+            <button id="downloadJsonBtn" class="btn-secondary">📥 Télécharger projects.json</button>
+            <button id="copyJsonBtn" class="btn-secondary">📋 Copier le JSON</button>
+            <button id="resetDataBtn" class="btn-danger" style="margin-left: auto;">🔄 Réinitialiser par défaut</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script>
-    // Interactive filter functionality
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const projectCards = document.querySelectorAll('.project-card');
+    // ================================================================
+    // MOTEUR DYNAMIQUE DU PORTFOLIO (ZERO CODE EN DUR)
+    // ================================================================
+    let allProjects = [];
+    const categories = window.PORTFOLIO_CATEGORIES || [
+      { id: "all", label: "Tous" },
+      { id: "perso", label: "⭐ Projet Personnel", btnClass: "filter-perso-btn", badgeClass: "badge-perso", defaultBadge: "⭐ PROJET PERSONNEL" },
+      { id: "psu", label: "PSU — Système Unix", badgeClass: "badge-psu", defaultBadge: "Système Unix (PSU)" },
+      { id: "cpe", label: "Algorithmes & C", badgeClass: "badge-cpe", defaultBadge: "Algorithmes & C (CPE)" },
+      { id: "graphic", label: "Graphique & CSFML", badgeClass: "badge-graphic", defaultBadge: "Graphique 2D (CSFML)" },
+      { id: "mat", label: "Mathématiques", badgeClass: "badge-mat", defaultBadge: "Calcul Scientifique" },
+      { id: "sec", label: "Cybersécurité", badgeClass: "badge-sec", defaultBadge: "Cybersécurité" },
+      { id: "ai", label: "IA & Data", badgeClass: "badge-ai", defaultBadge: "IA & Data en C" },
+      { id: "devops", label: "DevOps & Cloud", badgeClass: "badge-devops", defaultBadge: "DevOps & CI/CD" },
+      { id: "web", label: "Web & Backend", badgeClass: "badge-web", defaultBadge: "Backend / API REST" }
+    ];
 
-    filterButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        filterButtons.forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
+    let currentFilter = 'all';
+    let searchQuery = '';
 
-        const filter = button.getAttribute('data-filter');
+    // Initialisation
+    function initPortfolio() {
+      // 1. Priorité au localStorage (si l'utilisateur a fait des modifications sans code)
+      const stored = localStorage.getItem('custom_portfolio_projects');
+      if (stored) {
+        try {
+          allProjects = JSON.parse(stored);
+          renderUI();
+          setupEventListeners();
+          return;
+        } catch(e) {
+          console.warn('Erreur lecture localStorage, fallback par défaut');
+        }
+      }
 
-        projectCards.forEach(card => {
-          if (filter === 'all') {
-            card.classList.remove('hidden');
-          } else {
-            const categories = card.getAttribute('data-category') || '';
-            if (categories.split(' ').includes(filter)) {
-              card.classList.remove('hidden');
-            } else {
-              card.classList.add('hidden');
+      // 2. Sinon données par défaut de projects.js
+      if (window.PORTFOLIO_PROJECTS && window.PORTFOLIO_PROJECTS.length > 0) {
+        allProjects = JSON.parse(JSON.stringify(window.PORTFOLIO_PROJECTS));
+        renderUI();
+        setupEventListeners();
+      } else {
+        // 3. Fallback fetch HTTP
+        fetch('data/projects.json')
+          .then(res => res.json())
+          .then(data => {
+            allProjects = data;
+            renderUI();
+            setupEventListeners();
+          })
+          .catch(err => {
+            console.error('Impossible de charger les projets:', err);
+          });
+      }
+    }
+
+    // Rendu global
+    function renderUI() {
+      renderFilters();
+      renderCards();
+    }
+
+    // Génération dynamique des boutons de filtres avec comptage en temps réel
+    function renderFilters() {
+      const filterBar = document.getElementById('filterBar');
+      if (!filterBar) return;
+
+      filterBar.innerHTML = '';
+      categories.forEach(cat => {
+        let count = 0;
+        if (cat.id === 'all') {
+          count = allProjects.length;
+        } else {
+          count = allProjects.filter(p => p.category === cat.id).length;
+        }
+
+        const btn = document.createElement('button');
+        btn.className = `filter-btn ${cat.btnClass || ''} ${currentFilter === cat.id ? 'active' : ''}`.trim();
+        btn.setAttribute('data-filter', cat.id);
+        btn.textContent = `${cat.label} (${count})`;
+        
+        btn.addEventListener('click', () => {
+          currentFilter = cat.id;
+          document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          renderCards();
+        });
+
+        filterBar.appendChild(btn);
+      });
+    }
+
+    // Rendu dynamique des cartes de projets
+    function renderCards() {
+      const grid = document.getElementById('projectsGrid');
+      const noResults = document.getElementById('noResults');
+      if (!grid) return;
+
+      // Filtrage
+      let filtered = allProjects.filter(p => {
+        // Filtre catégorie
+        const matchCat = (currentFilter === 'all') || (p.category === currentFilter);
+        
+        // Filtre recherche textuelle
+        let matchSearch = true;
+        if (searchQuery.trim() !== '') {
+          const q = searchQuery.toLowerCase();
+          const title = (p.title || '').toLowerCase();
+          const desc = (p.description || '').toLowerCase();
+          const tags = (p.tags || []).join(' ').toLowerCase();
+          const badge = (p.badgeText || '').toLowerCase();
+          matchSearch = title.includes(q) || desc.includes(q) || tags.includes(q) || badge.includes(q);
+        }
+
+        return matchCat && matchSearch;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '';
+        if (noResults) noResults.style.display = 'block';
+        return;
+      }
+
+      if (noResults) noResults.style.display = 'none';
+
+      grid.innerHTML = filtered.map(p => {
+        const catObj = categories.find(c => c.id === p.category) || {};
+        const badgeClass = p.badgeClass || catObj.badgeClass || 'badge-system';
+        const badgeText = p.badgeText || catObj.defaultBadge || p.category.toUpperCase();
+        const isFeatured = p.featured || p.category === 'perso';
+
+        const featuresHtml = (p.features && p.features.length > 0)
+          ? `<ul class="project-feature-list">${p.features.map(f => `<li>${f}</li>`).join('')}</ul>`
+          : '';
+
+        const tagsHtml = (p.tags && p.tags.length > 0)
+          ? `<div class="project-tags">${p.tags.map(t => {
+              const goldClass = t.includes('★') ? 'tag-gold' : '';
+              return `<span class="tag ${goldClass}">${t}</span>`;
+            }).join('')}</div>`
+          : '';
+
+        const subtitleHtml = p.subtitle 
+          ? `<span style="font-size: 0.82rem; color: #fbbf24; font-weight: 600; display: block; margin-top: 4px;">${p.subtitle}</span>`
+          : '';
+
+        return `
+          <div class="project-card ${isFeatured ? 'featured-perso' : ''}" data-category="${p.category}" style="position: relative;">
+            <div class="card-actions">
+              <button class="card-action-btn" title="Modifier ce projet" onclick="editProject('${p.id}')">✏️</button>
+              <button class="card-action-btn btn-card-del" title="Supprimer ce projet" onclick="deleteProject('${p.id}')">🗑️</button>
+            </div>
+            <div class="project-top">
+              <div class="project-meta">
+                <span class="project-category-badge ${badgeClass}">${badgeText}</span>
+                <span class="project-date">${p.date}</span>
+              </div>
+              <h3 class="project-title">
+                ${p.title}
+                ${subtitleHtml}
+              </h3>
+              <p class="project-desc">${p.description}</p>
+              ${featuresHtml}
+            </div>
+            ${tagsHtml}
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Gestionnaires d'événements
+    function setupEventListeners() {
+      // Recherche en direct
+      const searchInput = document.getElementById('projectSearch');
+      const clearBtn = document.getElementById('clearSearchBtn');
+      const resetSearchBtn = document.getElementById('resetSearchBtn');
+
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          searchQuery = e.target.value;
+          if (clearBtn) clearBtn.style.display = searchQuery ? 'block' : 'none';
+          renderCards();
+        });
+      }
+
+      if (clearBtn) {
+        clearBtn.addEventListener('click', () => {
+          if (searchInput) searchInput.value = '';
+          searchQuery = '';
+          clearBtn.style.display = 'none';
+          renderCards();
+        });
+      }
+
+      if (resetSearchBtn) {
+        resetSearchBtn.addEventListener('click', () => {
+          if (searchInput) searchInput.value = '';
+          searchQuery = '';
+          currentFilter = 'all';
+          if (clearBtn) clearBtn.style.display = 'none';
+          renderUI();
+        });
+      }
+
+      // Modal Admin
+      const modal = document.getElementById('adminModal');
+      const adminToggleBtn = document.getElementById('adminToggleBtn');
+      const closeAdminModalBtn = document.getElementById('closeAdminModalBtn');
+      const cancelEditBtn = document.getElementById('cancelEditBtn');
+      const projectForm = document.getElementById('projectForm');
+
+      if (adminToggleBtn) {
+        adminToggleBtn.addEventListener('click', () => {
+          resetForm();
+          modal.style.display = 'flex';
+        });
+      }
+
+      if (closeAdminModalBtn) {
+        closeAdminModalBtn.addEventListener('click', () => {
+          modal.style.display = 'none';
+        });
+      }
+
+      if (cancelEditBtn) {
+        cancelEditBtn.addEventListener('click', () => {
+          resetForm();
+        });
+      }
+
+      // Enregistrement d'un projet (Ajout ou Modification)
+      if (projectForm) {
+        projectForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const id = document.getElementById('formProjectId').value;
+          const title = document.getElementById('formTitle').value.trim();
+          const category = document.getElementById('formCategory').value;
+          const date = document.getElementById('formDate').value.trim();
+          const badgeText = document.getElementById('formBadge').value.trim();
+          const desc = document.getElementById('formDesc').value.trim();
+          const tagsStr = document.getElementById('formTags').value.trim();
+          const featuresStr = document.getElementById('formFeatures').value.trim();
+
+          const tags = tagsStr.split(',').map(t => t.trim()).filter(Boolean);
+          const features = featuresStr.split('\n').map(f => f.trim()).filter(Boolean);
+
+          const catObj = categories.find(c => c.id === category) || {};
+          const badgeClass = catObj.badgeClass || 'badge-system';
+
+          if (id) {
+            // Modification
+            const idx = allProjects.findIndex(p => p.id === id);
+            if (idx !== -1) {
+              allProjects[idx] = {
+                ...allProjects[idx],
+                title,
+                category,
+                date,
+                badgeText: badgeText || catObj.defaultBadge || category.toUpperCase(),
+                badgeClass,
+                description: desc,
+                tags,
+                features
+              };
             }
+          } else {
+            // Ajout
+            const newProj = {
+              id: 'proj-' + Date.now(),
+              title,
+              subtitle: '',
+              category,
+              badgeText: badgeText || catObj.defaultBadge || category.toUpperCase(),
+              badgeClass,
+              date,
+              featured: category === 'perso',
+              description: desc,
+              features,
+              tags
+            };
+            allProjects.unshift(newProj);
+          }
+
+          saveToLocalStorage();
+          renderUI();
+          modal.style.display = 'none';
+          resetForm();
+          alert('Projet enregistré avec succès ! Il apparaît immédiatement sur votre page.');
+        });
+      }
+
+      // Télécharger le JSON à jour
+      const downloadBtn = document.getElementById('downloadJsonBtn');
+      if (downloadBtn) {
+        downloadBtn.addEventListener('click', () => {
+          const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(allProjects, null, 2));
+          const dlAnchorElem = document.createElement('a');
+          dlAnchorElem.setAttribute("href", dataStr);
+          dlAnchorElem.setAttribute("download", "projects.json");
+          dlAnchorElem.click();
+        });
+      }
+
+      // Copier le JSON
+      const copyBtn = document.getElementById('copyJsonBtn');
+      if (copyBtn) {
+        copyBtn.addEventListener('click', () => {
+          navigator.clipboard.writeText(JSON.stringify(allProjects, null, 2))
+            .then(() => alert('JSON copié dans le presse-papiers !'))
+            .catch(() => alert('Erreur lors de la copie.'));
+        });
+      }
+
+      // Réinitialiser les données
+      const resetBtn = document.getElementById('resetDataBtn');
+      if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+          if (confirm('Voulez-vous vraiment réinitialiser le portfolio avec les 30 projets d\'origine ?')) {
+            localStorage.removeItem('custom_portfolio_projects');
+            if (window.PORTFOLIO_PROJECTS) {
+              allProjects = JSON.parse(JSON.stringify(window.PORTFOLIO_PROJECTS));
+            }
+            renderUI();
+            modal.style.display = 'none';
+            alert('Portfolio réinitialisé avec succès !');
           }
         });
-      });
-    });
+      }
+    }
+
+    function saveToLocalStorage() {
+      localStorage.setItem('custom_portfolio_projects', JSON.stringify(allProjects));
+    }
+
+    function resetForm() {
+      document.getElementById('formProjectId').value = '';
+      document.getElementById('formTitle').value = '';
+      document.getElementById('formCategory').value = 'psu';
+      document.getElementById('formDate').value = '';
+      document.getElementById('formBadge').value = '';
+      document.getElementById('formDesc').value = '';
+      document.getElementById('formTags').value = '';
+      document.getElementById('formFeatures').value = '';
+      document.getElementById('saveProjectBtn').textContent = '💾 Enregistrer le projet';
+      document.getElementById('cancelEditBtn').style.display = 'none';
+    }
+
+    // Fonctions globales pour édition / suppression
+    window.editProject = function(id) {
+      const proj = allProjects.find(p => p.id === id);
+      if (!proj) return;
+
+      document.getElementById('formProjectId').value = proj.id;
+      document.getElementById('formTitle').value = proj.title || '';
+      document.getElementById('formCategory').value = proj.category || 'psu';
+      document.getElementById('formDate').value = proj.date || '';
+      document.getElementById('formBadge').value = proj.badgeText || '';
+      document.getElementById('formDesc').value = proj.description || '';
+      document.getElementById('formTags').value = (proj.tags || []).join(', ');
+      document.getElementById('formFeatures').value = (proj.features || []).join('\n');
+
+      document.getElementById('saveProjectBtn').textContent = '💾 Mettre à jour le projet';
+      document.getElementById('cancelEditBtn').style.display = 'inline-block';
+
+      document.getElementById('adminModal').style.display = 'flex';
+    };
+
+    window.deleteProject = function(id) {
+      const proj = allProjects.find(p => p.id === id);
+      const name = proj ? proj.title : 'ce projet';
+      if (confirm(`Voulez-vous vraiment supprimer "${name}" ?`)) {
+        allProjects = allProjects.filter(p => p.id !== id);
+        saveToLocalStorage();
+        renderUI();
+      }
+    };
+
+    // Lancer au chargement du DOM
+    document.addEventListener('DOMContentLoaded', initPortfolio);
   </script>
 </body>
 </html>
