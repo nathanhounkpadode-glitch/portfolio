@@ -6,5 +6,8 @@
   "bio": "Développeur rigoureux passionné par la <strong>programmation Système & C</strong>, les architectures logicielles propres et le développement Fullstack moderne. Créateur d'applications en production (dont la plateforme spirituelle et mobile <strong>Lecture Quotidienne EEDSC</strong>).",
   "avatar": "avatar.png",
   "email": "nathan.hounkpadode@epitech.eu",
-  "phone": "+229 01 91 63 63 13"
+  "phone": "+229 01 91 63 63 13",
+  "status": "Disponible pour opportunités & collaborations",
+  "statusSubtext": "Développeur logiciel & web. Passionné par les défis d'ingénierie, la programmation système et les architectures modernes.",
+  "github": "https://github.com/nathanhounkpadode-glitch"
 }

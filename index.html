@@ -955,6 +955,127 @@
       opacity: 1;
     }
 
+
+    /* Availability Badge with pulsing green light */
+    .availability-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      color: #6ee7b7;
+      padding: 8px 18px;
+      border-radius: 9999px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .status-pulse {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: #10b981;
+      box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+      animation: pulseGreen 2s infinite;
+    }
+
+    @keyframes pulseGreen {
+      0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+      }
+      70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+      }
+      100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+      }
+    }
+
+    /* Direct Contact Form */
+    .direct-contact-form {
+      max-width: 580px;
+      margin: 0 auto 28px;
+      text-align: left;
+    }
+
+    .contact-input {
+      width: 100%;
+      background: rgba(17, 24, 39, 0.85);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 12px 16px;
+      color: var(--text-main);
+      font-family: var(--font-main);
+      font-size: 0.92rem;
+      margin-bottom: 14px;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+
+    .contact-input:focus {
+      border-color: var(--accent);
+      background: rgba(17, 24, 39, 0.98);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+    }
+
+    .direct-contact-form .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    @media (max-width: 600px) {
+      .direct-contact-form .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+    }
+
+    .contact-success-msg {
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: #a7f3d0;
+      padding: 16px 20px;
+      border-radius: 12px;
+      margin: 16px auto 24px;
+      max-width: 580px;
+      font-size: 0.92rem;
+    }
+
+    .contact-direct-links {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .contact-pill {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      padding: 10px 18px;
+      border-radius: 9999px;
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .contact-pill:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.25);
+      transform: translateY(-2px);
+    }
+
   </style>
   <script src="data/projects.js"></script>
 </head>
@@ -1046,58 +1167,17 @@
     </section>
 
     <!-- Skills Section -->
+        <!-- Skills Section (Dynamique depuis data/skills.json) -->
     <section id="skills">
       <div class="section-header">
         <div class="section-tag">Compétences Techniques</div>
         <h2 class="section-title">Stack & Domaines d'Expertise</h2>
       </div>
 
-      <div class="skills-grid">
-        <div class="skill-card">
-          <h3>⚡ Développement Web & Fullstack</h3>
-          <ul class="skill-list">
-            <li>Next.js 14 / React & TypeScript</li>
-            <li>Applications Mobiles Hybrides (Capacitor)</li>
-            <li>Node.js, Express & APIs REST</li>
-            <li>Prisma ORM, PostgreSQL & MySQL</li>
-            <li>Tailwind CSS, Responsive & PWA</li>
-          </ul>
-        </div>
-
-        <div class="skill-card">
-          <h3>💻 Systèmes Unix & Langage C</h3>
-          <ul class="skill-list">
-            <li>Langage C (Pointeurs, mémoire, POSIX)</li>
-            <li>Appels système Unix (fork, pipe, execve, stat)</li>
-            <li>Débogage avancé & Valgrind (zéro fuite)</li>
-            <li>Bibliothèque graphique CSFML (Game loop 60 FPS)</li>
-            <li>Assembleur & Machine Virtuelle Corewar</li>
-          </ul>
-        </div>
-
-        <div class="skill-card">
-          <h3>🚀 DevOps, Cloud & CI/CD</h3>
-          <ul class="skill-list">
-            <li>Docker & Docker Compose (Microservices)</li>
-            <li>Pipelines CI/CD (GitHub Actions, GitLab CI)</li>
-            <li>Surveillance système Linux (Top, /proc)</li>
-            <li>Tests E2E automatisés (Playwright)</li>
-          </ul>
-        </div>
-
-        <div class="skill-card">
-          <h3>🛡️ IA, Maths & Cybersécurité</h3>
-          <ul class="skill-list">
-            <li>Algorithmes quantitatifs & Machine Learning</li>
-            <li>Bibliothèque de DataFrames en C (Cuddle)</li>
-            <li>Mathématiques appliquées (Taylor, Simpson, Hill)</li>
-            <li>Audit de sécurité White-Box & Pentest (OWASP Top 10)</li>
-          </ul>
-        </div>
-      </div>
+      <div class="skills-grid" id="skillsGrid"></div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact Section (Formulaire Dynamique & Coordonnées Modifiables) -->
     <section id="contact">
       <div class="section-header">
         <div class="section-tag">Prise de contact</div>
@@ -1105,16 +1185,42 @@
       </div>
 
       <div class="contact-card">
-        <h3 style="font-size: 1.6rem; margin-bottom: 12px; font-weight: 700;">Disponible pour opportunités & collaborations</h3>
-        <p style="color: var(--text-muted); margin-bottom: 28px; max-width: 580px; margin-left: auto; margin-right: auto;">
+        <div class="availability-badge" id="contactStatusBadge">
+          <span class="status-pulse"></span>
+          <span id="contactStatusText">Disponible pour opportunités & collaborations</span>
+        </div>
+        
+        <p id="contactSubtext" style="color: var(--text-muted); margin: 16px auto 28px; max-width: 580px;">
           Développeur logiciel & web. Passionné par les défis d'ingénierie, la programmation système et les architectures modernes.
         </p>
-        <div class="hero-actions" style="justify-content: center;">
-          <a href="mailto:nathan.hounkpadode@epitech.eu" class="btn-primary" id="contactEmailBtn">
+
+        <!-- Formulaire de contact interactif direct -->
+        <form id="directContactForm" class="direct-contact-form">
+          <div class="form-row">
+            <input type="text" id="senderName" required placeholder="Votre nom ou entreprise *" class="contact-input">
+            <input type="email" id="senderEmail" required placeholder="Votre adresse email *" class="contact-input">
+          </div>
+          <input type="text" id="senderSubject" required placeholder="Sujet de votre message *" class="contact-input">
+          <textarea id="senderMessage" rows="4" required placeholder="Votre message, opportunité de stage ou collaboration... *" class="contact-input"></textarea>
+          
+          <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; padding: 14px; font-size: 1rem;">
+            ✉️ Envoyer le message directement
+          </button>
+        </form>
+
+        <div id="contactSuccessMsg" class="contact-success-msg" style="display: none;">
+          🎉 Merci ! Votre message est prêt et votre messagerie s'ouvre pour l'expédier en direct à Nathan.
+        </div>
+
+        <div class="contact-direct-links">
+          <a href="mailto:nathan.hounkpadode@epitech.eu" class="contact-pill" id="contactEmailBtn">
             ✉️ <span id="contactEmailText">nathan.hounkpadode@epitech.eu</span>
           </a>
-          <a href="tel:+2290191636313" class="btn-secondary" id="contactPhoneBtn">
+          <a href="tel:+2290191636313" class="contact-pill" id="contactPhoneBtn">
             📞 <span id="contactPhoneText">+229 01 91 63 63 13</span>
+          </a>
+          <a href="https://github.com/nathanhounkpadode-glitch" target="_blank" class="contact-pill" id="contactGithubBtn">
+            🐙 GitHub
           </a>
         </div>
       </div>
@@ -1127,6 +1233,7 @@
 
     <!-- Modal de Gestion Dynamique des Projets (Sans coder) -->
     <!-- Modal de Gestion Dynamique (Profil, Photo & Projets) -->
+    <!-- Modal de Gestion Dynamique (Profil, Contact, Compétences & Projets) -->
   <div id="adminModal" class="admin-modal" style="display: none;">
     <div class="admin-modal-content">
       <div class="admin-modal-header">
@@ -1135,16 +1242,17 @@
       </div>
       <div class="admin-modal-body">
         
-        <!-- Navigation Onglets -->
+        <!-- Navigation 3 Onglets -->
         <div class="admin-tabs">
-          <button type="button" class="admin-tab-btn active" data-tab="tab-profile">👤 Profil & Photo</button>
-          <button type="button" class="admin-tab-btn" data-tab="tab-projects">📋 Projets & Réalisations</button>
+          <button type="button" class="admin-tab-btn active" data-tab="tab-profile">👤 Profil & Contact</button>
+          <button type="button" class="admin-tab-btn" data-tab="tab-skills">⚡ Compétences</button>
+          <button type="button" class="admin-tab-btn" data-tab="tab-projects">📋 Projets Réalisés</button>
         </div>
 
-        <!-- ================= ONGLET 1 : PROFIL & PHOTO ================= -->
+        <!-- ================= ONGLET 1 : PROFIL & CONTACT ================= -->
         <div id="tab-profile" class="admin-tab-pane active">
           <div class="admin-tip">
-            💡 <strong>Personnalisation instantanée</strong> : Changez votre photo de profil, votre titre, votre bio ou vos coordonnées. Tout se met à jour en direct sur votre site !
+            💡 <strong>Personnalisation instantanée</strong> : Changez votre photo, vos coordonnées, votre statut de disponibilité ou votre bio. Tout se met à jour en direct !
           </div>
 
           <form id="profileForm" class="admin-form">
@@ -1158,7 +1266,7 @@
                     📁 Choisir une photo (PC / Téléphone)
                   </button>
                   <button type="button" class="btn-secondary" id="modalResetAvatarBtn" style="font-size: 0.85rem; padding: 8px 14px;">
-                    🔄 Remettre la photo initiale
+                    🔄 Photo initiale
                   </button>
                 </div>
                 <input type="file" id="modalAvatarFileInput" accept="image/*" style="display: none;">
@@ -1187,6 +1295,19 @@
               <textarea id="profileBioInput" rows="3" required placeholder="Votre description, passions techniques et réalisations..."></textarea>
             </div>
 
+            <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 20px 0;">
+            <h4 style="font-size: 0.95rem; color: var(--accent); margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.05em;">Coordonnées & Prise de Contact</h4>
+
+            <div class="form-group">
+              <label for="profileStatusInput">Statut de disponibilité (Badge vert animé) *</label>
+              <input type="text" id="profileStatusInput" required placeholder="Ex: Disponible pour opportunités & collaborations">
+            </div>
+
+            <div class="form-group">
+              <label for="profileStatusSubtextInput">Sous-titre de la section Contact *</label>
+              <textarea id="profileStatusSubtextInput" rows="2" required placeholder="Texte d'invitation au contact..."></textarea>
+            </div>
+
             <div class="form-row">
               <div class="form-group">
                 <label for="profileEmailInput">Email de contact *</label>
@@ -1198,17 +1319,37 @@
               </div>
             </div>
 
+            <div class="form-group">
+              <label for="profileGithubInput">Lien GitHub</label>
+              <input type="url" id="profileGithubInput" placeholder="https://github.com/votre-compte">
+            </div>
+
             <div class="form-actions">
-              <button type="submit" class="btn-primary">💾 Enregistrer le Profil & Photo</button>
+              <button type="submit" class="btn-primary">💾 Enregistrer Profil & Contact</button>
               <button type="button" class="btn-secondary" id="downloadProfileJsonBtn">📥 Télécharger profile.json</button>
             </div>
           </form>
         </div>
 
-        <!-- ================= ONGLET 2 : PROJETS ================= -->
+        <!-- ================= ONGLET 2 : COMPÉTENCES ================= -->
+        <div id="tab-skills" class="admin-tab-pane">
+          <div class="admin-tip">
+            💡 <strong>Stack & Compétences</strong> : Modifiez vos domaines d'expertise et les technologies associées. Chaque ligne correspond à un point fort.
+          </div>
+
+          <div id="skillsEditorList"></div>
+
+          <div class="form-actions" style="margin-top: 20px;">
+            <button type="button" class="btn-primary" id="saveSkillsBtn">💾 Enregistrer les Compétences</button>
+            <button type="button" class="btn-secondary" id="downloadSkillsJsonBtn">📥 Télécharger skills.json</button>
+            <button type="button" class="btn-danger" id="resetSkillsBtn" style="margin-left: auto;">🔄 Réinitialiser Compétences</button>
+          </div>
+        </div>
+
+        <!-- ================= ONGLET 3 : PROJETS ================= -->
         <div id="tab-projects" class="admin-tab-pane">
           <div class="admin-tip">
-            💡 <strong>Gestion des projets sans code</strong> : Ajoutez ou modifiez un projet ci-dessous. Le calcul des filtres se fait en temps réel !
+            💡 <strong>Gestion des projets sans code</strong> : Ajoutez ou modifiez un projet ci-dessous. Les compteurs se recalculent en direct !
           </div>
           
           <form id="projectForm" class="admin-form">
@@ -1283,6 +1424,10 @@
     </div>
   </div>
 
+      </div>
+    </div>
+  </div>
+
   <!-- Toast notification -->
   <div id="toastNotification" class="toast-notification">
     <span id="toastIcon">✅</span>
@@ -1291,12 +1436,12 @@
     </div>
   </div>
 
-    <script>
+      <script>
     // ================================================================
-    // MOTEUR ULTRA-DYNAMIQUE : PROFIL, PHOTO & PROJETS SANS CODE
+    // MOTEUR UNIFIÉ 100% DYNAMIQUE (PROFIL, CONTACT, SKILLS, PROJETS)
     // ================================================================
 
-    // Données par défaut
+    // 1. Profil & Contact par défaut
     const defaultProfile = {
       name: "Nathan HOUNKPADODE",
       fullName: "Nathan Schalom HOUNKPADODE",
@@ -1305,10 +1450,63 @@
       bio: "Développeur rigoureux passionné par la <strong>programmation Système & C</strong>, les architectures logicielles propres et le développement Fullstack moderne. Créateur d'applications en production (dont la plateforme spirituelle et mobile <strong>Lecture Quotidienne EEDSC</strong>).",
       avatar: "avatar.png",
       email: "nathan.hounkpadode@epitech.eu",
-      phone: "+229 01 91 63 63 13"
+      phone: "+229 01 91 63 63 13",
+      status: "Disponible pour opportunités & collaborations",
+      statusSubtext: "Développeur logiciel & web. Passionné par les défis d'ingénierie, la programmation système et les architectures modernes.",
+      github: "https://github.com/nathanhounkpadode-glitch"
     };
 
     let currentProfile = JSON.parse(JSON.stringify(window.PORTFOLIO_PROFILE || defaultProfile));
+
+    // 2. Compétences par défaut
+    const defaultSkills = [
+      {
+        id: "skill-1",
+        title: "⚡ Développement Web & Fullstack",
+        items: [
+          "Next.js 14 / React & TypeScript",
+          "Applications Mobiles Hybrides (Capacitor)",
+          "Node.js, Express & APIs REST",
+          "Prisma ORM, PostgreSQL & MySQL",
+          "Tailwind CSS, Responsive & PWA"
+        ]
+      },
+      {
+        id: "skill-2",
+        title: "💻 Systèmes Unix & Langage C",
+        items: [
+          "Langage C (Pointeurs, mémoire, POSIX)",
+          "Appels système Unix (fork, pipe, execve, stat)",
+          "Débogage avancé & Valgrind (zéro fuite)",
+          "Bibliothèque graphique CSFML (Game loop 60 FPS)",
+          "Assembleur & Machine Virtuelle Corewar"
+        ]
+      },
+      {
+        id: "skill-3",
+        title: "🚀 DevOps, Cloud & CI/CD",
+        items: [
+          "Docker & Docker Compose (Microservices)",
+          "Pipelines CI/CD (GitHub Actions, GitLab CI)",
+          "Surveillance système Linux (Top, /proc)",
+          "Tests E2E automatisés (Playwright)"
+        ]
+      },
+      {
+        id: "skill-4",
+        title: "🛡️ IA, Maths & Cybersécurité",
+        items: [
+          "Algorithmes quantitatifs & Machine Learning",
+          "Bibliothèque de DataFrames en C (Cuddle)",
+          "Mathématiques appliquées (Taylor, Simpson, Hill)",
+          "Audit de sécurité White-Box & Pentest (OWASP Top 10)"
+        ]
+      }
+    ];
+
+    let allSkills = JSON.parse(JSON.stringify(window.PORTFOLIO_SKILLS || defaultSkills));
+
+    // 3. Projets & Catégories
     let allProjects = [];
 
     const categories = window.PORTFOLIO_CATEGORIES || [
@@ -1332,24 +1530,24 @@
     // ================================================================
     function initPortfolio() {
       initProfile();
+      initSkills();
       initProjects();
       setupEventListeners();
     }
 
-    // Initialisation du Profil
+    // ================================================================
+    // GESTION DU PROFIL & CONTACT DYNAMIQUE
+    // ================================================================
     function initProfile() {
       const savedProfile = localStorage.getItem('custom_portfolio_profile');
       if (savedProfile) {
         try {
           currentProfile = JSON.parse(savedProfile);
-        } catch(e) {
-          console.warn('Erreur lecture profil localStorage');
-        }
+        } catch(e) {}
       }
       renderProfileUI();
     }
 
-    // Affichage dynamique du Profil & Photo
     function renderProfileUI() {
       // Photo de profil
       const avatarImg = document.getElementById('profileAvatarImg');
@@ -1357,7 +1555,7 @@
       if (avatarImg) avatarImg.src = currentProfile.avatar;
       if (modalAvatar) modalAvatar.src = currentProfile.avatar;
 
-      // Textes du profil
+      // Textes Hero
       const badgeText = document.getElementById('profileBadgeText');
       if (badgeText) badgeText.textContent = currentProfile.badge;
 
@@ -1367,7 +1565,13 @@
       const bio = document.getElementById('profileBio');
       if (bio) bio.innerHTML = currentProfile.bio;
 
-      // Contacts
+      // Section Contact dynamique
+      const statusText = document.getElementById('contactStatusText');
+      if (statusText) statusText.textContent = currentProfile.status || "Disponible pour opportunités & collaborations";
+
+      const subtext = document.getElementById('contactSubtext');
+      if (subtext) subtext.textContent = currentProfile.statusSubtext || "Développeur logiciel & web. Passionné par les défis d'ingénierie, la programmation système et les architectures modernes.";
+
       const heroContactBtn = document.getElementById('heroContactBtn');
       if (heroContactBtn) heroContactBtn.href = 'mailto:' + currentProfile.email;
 
@@ -1381,23 +1585,81 @@
       if (contactPhoneBtn) contactPhoneBtn.href = 'tel:' + currentProfile.phone.replace(/\s+/g, '');
       if (contactPhoneText) contactPhoneText.textContent = currentProfile.phone;
 
-      // Remplir le formulaire dans le modal
+      const contactGithubBtn = document.getElementById('contactGithubBtn');
+      if (contactGithubBtn && currentProfile.github) {
+        contactGithubBtn.href = currentProfile.github;
+      }
+
+      // Pré-remplir formulaire modal
       const nameInput = document.getElementById('profileNameInput');
       const badgeInput = document.getElementById('profileBadgeInput');
       const headlineInput = document.getElementById('profileHeadlineInput');
       const bioInput = document.getElementById('profileBioInput');
+      const statusInput = document.getElementById('profileStatusInput');
+      const subtextInput = document.getElementById('profileStatusSubtextInput');
       const emailInput = document.getElementById('profileEmailInput');
       const phoneInput = document.getElementById('profilePhoneInput');
+      const githubInput = document.getElementById('profileGithubInput');
 
       if (nameInput) nameInput.value = currentProfile.name || '';
       if (badgeInput) badgeInput.value = currentProfile.badge || '';
       if (headlineInput) headlineInput.value = (currentProfile.headline || '').replace(/<[^>]*>/g, '');
       if (bioInput) bioInput.value = (currentProfile.bio || '').replace(/<[^>]*>/g, '');
+      if (statusInput) statusInput.value = currentProfile.status || '';
+      if (subtextInput) subtextInput.value = currentProfile.statusSubtext || '';
       if (emailInput) emailInput.value = currentProfile.email || '';
       if (phoneInput) phoneInput.value = currentProfile.phone || '';
+      if (githubInput) githubInput.value = currentProfile.github || '';
     }
 
-    // Initialisation des Projets
+    // ================================================================
+    // GESTION DES COMPÉTENCES DYNAMIQUES
+    // ================================================================
+    function initSkills() {
+      const savedSkills = localStorage.getItem('custom_portfolio_skills');
+      if (savedSkills) {
+        try {
+          allSkills = JSON.parse(savedSkills);
+        } catch(e) {}
+      }
+      renderSkills();
+      renderSkillsEditor();
+    }
+
+    function renderSkills() {
+      const grid = document.getElementById('skillsGrid');
+      if (!grid) return;
+      grid.innerHTML = allSkills.map(s => `
+        <div class="skill-card">
+          <h3>${s.title}</h3>
+          <ul class="skill-list">
+            ${s.items.map(item => `<li>${item}</li>`).join('')}
+          </ul>
+        </div>
+      `).join('');
+    }
+
+    function renderSkillsEditor() {
+      const container = document.getElementById('skillsEditorList');
+      if (!container) return;
+
+      container.innerHTML = allSkills.map((s, idx) => `
+        <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; margin-bottom: 16px;">
+          <div class="form-group" style="margin-bottom: 10px;">
+            <label>Titre du domaine ${idx + 1}</label>
+            <input type="text" id="skillTitle_${idx}" value="${s.title}" class="contact-input" style="margin-bottom: 6px;">
+          </div>
+          <div class="form-group" style="margin-bottom: 0;">
+            <label>Compétences / Lignes (une par ligne)</label>
+            <textarea id="skillItems_${idx}" rows="4" class="contact-input" style="margin-bottom: 0;">${s.items.join('\n')}</textarea>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // ================================================================
+    // GESTION DES PROJETS DYNAMIQUES
+    // ================================================================
     function initProjects() {
       const stored = localStorage.getItem('custom_portfolio_projects');
       if (stored) {
@@ -1429,7 +1691,6 @@
       renderCards();
     }
 
-    // Filtres dynamiques avec compteurs
     function renderFilters() {
       const filterBar = document.getElementById('filterBar');
       if (!filterBar) return;
@@ -1459,7 +1720,6 @@
       });
     }
 
-    // Rendu dynamique des cartes
     function renderCards() {
       const grid = document.getElementById('projectsGrid');
       const noResults = document.getElementById('noResults');
@@ -1532,7 +1792,9 @@
       }).join('');
     }
 
-    // Toast de notification
+    // ================================================================
+    // UTILITAIRES & NOTIFICATIONS
+    // ================================================================
     function showToast(message, icon = '✅') {
       const toast = document.getElementById('toastNotification');
       const iconEl = document.getElementById('toastIcon');
@@ -1548,11 +1810,10 @@
       }, 3500);
     }
 
-    // Gestion du changement de photo par fichier
     function handlePhotoUpload(file) {
       if (!file) return;
       if (!file.type.startsWith('image/')) {
-        alert('Veuillez sélectionner un fichier image valide (PNG, JPG, WebP...).');
+        alert('Veuillez sélectionner un fichier image valide.');
         return;
       }
 
@@ -1570,13 +1831,19 @@
       localStorage.setItem('custom_portfolio_profile', JSON.stringify(currentProfile));
     }
 
+    function saveSkills() {
+      localStorage.setItem('custom_portfolio_skills', JSON.stringify(allSkills));
+    }
+
     function saveProjects() {
       localStorage.setItem('custom_portfolio_projects', JSON.stringify(allProjects));
     }
 
-    // Configuration des écouteurs
+    // ================================================================
+    // CONFIGURATION DES ÉCOUTEURS D'ÉVÉNEMENTS
+    // ================================================================
     function setupEventListeners() {
-      // 1. Clic direct sur l'avatar du Hero pour changer de photo
+      // 1. Clic direct sur l'avatar du Hero pour changer la photo
       const heroAvatar = document.getElementById('heroAvatarContainer');
       const avatarFileInput = document.getElementById('avatarFileInput');
 
@@ -1629,7 +1896,7 @@
         });
       }
 
-      // 3. Navigation par Onglets dans le Modal
+      // 3. Navigation par Onglets (3 Onglets)
       const tabButtons = document.querySelectorAll('.admin-tab-btn');
       tabButtons.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -1643,7 +1910,7 @@
         });
       });
 
-      // 4. Formulaire Profil
+      // 4. Formulaire Profil & Contact
       const profileForm = document.getElementById('profileForm');
       if (profileForm) {
         profileForm.addEventListener('submit', (e) => {
@@ -1652,16 +1919,18 @@
           currentProfile.badge = document.getElementById('profileBadgeInput').value.trim();
           currentProfile.headline = document.getElementById('profileHeadlineInput').value.trim();
           currentProfile.bio = document.getElementById('profileBioInput').value.trim();
+          currentProfile.status = document.getElementById('profileStatusInput').value.trim();
+          currentProfile.statusSubtext = document.getElementById('profileStatusSubtextInput').value.trim();
           currentProfile.email = document.getElementById('profileEmailInput').value.trim();
           currentProfile.phone = document.getElementById('profilePhoneInput').value.trim();
+          currentProfile.github = document.getElementById('profileGithubInput').value.trim();
 
           saveProfile();
           renderProfileUI();
-          showToast('Profil mis à jour avec succès !');
+          showToast('Profil et Contact mis à jour avec succès !');
         });
       }
 
-      // 5. Télécharger profile.json
       const dlProfileBtn = document.getElementById('downloadProfileJsonBtn');
       if (dlProfileBtn) {
         dlProfileBtn.addEventListener('click', () => {
@@ -1673,7 +1942,78 @@
         });
       }
 
-      // 6. Barre de recherche
+      // 5. Enregistrement des Compétences
+      const saveSkillsBtn = document.getElementById('saveSkillsBtn');
+      if (saveSkillsBtn) {
+        saveSkillsBtn.addEventListener('click', () => {
+          allSkills.forEach((s, idx) => {
+            const tInput = document.getElementById(`skillTitle_${idx}`);
+            const iInput = document.getElementById(`skillItems_${idx}`);
+            if (tInput) s.title = tInput.value.trim();
+            if (iInput) s.items = iInput.value.split('\n').map(x => x.trim()).filter(Boolean);
+          });
+          saveSkills();
+          renderSkills();
+          showToast('Compétences techniques mises à jour !', '⚡');
+        });
+      }
+
+      const dlSkillsBtn = document.getElementById('downloadSkillsJsonBtn');
+      if (dlSkillsBtn) {
+        dlSkillsBtn.addEventListener('click', () => {
+          const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(allSkills, null, 2));
+          const a = document.createElement('a');
+          a.href = dataStr;
+          a.download = "skills.json";
+          a.click();
+        });
+      }
+
+      const resetSkillsBtn = document.getElementById('resetSkillsBtn');
+      if (resetSkillsBtn) {
+        resetSkillsBtn.addEventListener('click', () => {
+          if (confirm('Réinitialiser la liste des compétences par défaut ?')) {
+            localStorage.removeItem('custom_portfolio_skills');
+            allSkills = JSON.parse(JSON.stringify(window.PORTFOLIO_SKILLS || defaultSkills));
+            renderSkills();
+            renderSkillsEditor();
+            showToast('Compétences réinitialisées !', '🔄');
+          }
+        });
+      }
+
+      // 6. Formulaire de Contact Direct sur la page
+      const directContactForm = document.getElementById('directContactForm');
+      const contactSuccessMsg = document.getElementById('contactSuccessMsg');
+      if (directContactForm) {
+        directContactForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const name = document.getElementById('senderName').value.trim();
+          const email = document.getElementById('senderEmail').value.trim();
+          const subject = document.getElementById('senderSubject').value.trim();
+          const message = document.getElementById('senderMessage').value.trim();
+
+          const bodyContent = `Bonjour Nathan,\n\nVous avez reçu un message depuis votre Portfolio :\n\nNom / Entreprise : ${name}\nEmail : ${email}\n\nMessage :\n${message}`;
+          const mailtoLink = `mailto:${currentProfile.email}?subject=${encodeURIComponent('[Portfolio] ' + subject)}&body=${encodeURIComponent(bodyContent)}`;
+
+          if (contactSuccessMsg) {
+            contactSuccessMsg.style.display = 'block';
+            setTimeout(() => {
+              contactSuccessMsg.style.display = 'none';
+            }, 8000);
+          }
+
+          directContactForm.reset();
+          showToast('Message préparé ! Ouverture de votre messagerie...', '✉️');
+
+          // Ouvre le client mail de l'utilisateur
+          setTimeout(() => {
+            window.location.href = mailtoLink;
+          }, 400);
+        });
+      }
+
+      // 7. Barre de recherche
       const searchInput = document.getElementById('projectSearch');
       const clearBtn = document.getElementById('clearSearchBtn');
       const resetSearchBtn = document.getElementById('resetSearchBtn');
@@ -1705,7 +2045,7 @@
         });
       }
 
-      // 7. Modal Admin toggle
+      // 8. Modal Admin toggle
       const modal = document.getElementById('adminModal');
       const adminToggleBtn = document.getElementById('adminToggleBtn');
       const closeAdminModalBtn = document.getElementById('closeAdminModalBtn');
@@ -1714,6 +2054,7 @@
       if (adminToggleBtn) {
         adminToggleBtn.addEventListener('click', () => {
           renderProfileUI();
+          renderSkillsEditor();
           resetProjectForm();
           modal.style.display = 'flex';
         });
@@ -1729,7 +2070,7 @@
         cancelEditBtn.addEventListener('click', () => resetProjectForm());
       }
 
-      // 8. Formulaire Projet
+      // 9. Formulaire Projet
       const projectForm = document.getElementById('projectForm');
       if (projectForm) {
         projectForm.addEventListener('submit', (e) => {
@@ -1789,7 +2130,7 @@
         });
       }
 
-      // 9. Télécharger / Copier / Réinitialiser projects.json
+      // 10. Télécharger / Copier / Réinitialiser projects.json
       const downloadBtn = document.getElementById('downloadJsonBtn');
       if (downloadBtn) {
         downloadBtn.addEventListener('click', () => {

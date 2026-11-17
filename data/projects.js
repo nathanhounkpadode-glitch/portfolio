@@ -1,4 +1,49 @@
 
+window.PORTFOLIO_SKILLS = [
+  {
+    "id": "skill-1",
+    "title": "⚡ Développement Web & Fullstack",
+    "items": [
+      "Next.js 14 / React & TypeScript",
+      "Applications Mobiles Hybrides (Capacitor)",
+      "Node.js, Express & APIs REST",
+      "Prisma ORM, PostgreSQL & MySQL",
+      "Tailwind CSS, Responsive & PWA"
+    ]
+  },
+  {
+    "id": "skill-2",
+    "title": "💻 Systèmes Unix & Langage C",
+    "items": [
+      "Langage C (Pointeurs, mémoire, POSIX)",
+      "Appels système Unix (fork, pipe, execve, stat)",
+      "Débogage avancé & Valgrind (zéro fuite)",
+      "Bibliothèque graphique CSFML (Game loop 60 FPS)",
+      "Assembleur & Machine Virtuelle Corewar"
+    ]
+  },
+  {
+    "id": "skill-3",
+    "title": "🚀 DevOps, Cloud & CI/CD",
+    "items": [
+      "Docker & Docker Compose (Microservices)",
+      "Pipelines CI/CD (GitHub Actions, GitLab CI)",
+      "Surveillance système Linux (Top, /proc)",
+      "Tests E2E automatisés (Playwright)"
+    ]
+  },
+  {
+    "id": "skill-4",
+    "title": "🛡️ IA, Maths & Cybersécurité",
+    "items": [
+      "Algorithmes quantitatifs & Machine Learning",
+      "Bibliothèque de DataFrames en C (Cuddle)",
+      "Mathématiques appliquées (Taylor, Simpson, Hill)",
+      "Audit de sécurité White-Box & Pentest (OWASP Top 10)"
+    ]
+  }
+];
+
 window.PORTFOLIO_PROFILE = {
   "name": "Nathan HOUNKPADODE",
   "fullName": "Nathan Schalom HOUNKPADODE",
@@ -7,7 +52,10 @@ window.PORTFOLIO_PROFILE = {
   "bio": "Développeur rigoureux passionné par la <strong>programmation Système & C</strong>, les architectures logicielles propres et le développement Fullstack moderne. Créateur d'applications en production (dont la plateforme spirituelle et mobile <strong>Lecture Quotidienne EEDSC</strong>).",
   "avatar": "avatar.png",
   "email": "nathan.hounkpadode@epitech.eu",
-  "phone": "+229 01 91 63 63 13"
+  "phone": "+229 01 91 63 63 13",
+  "status": "Disponible pour opportunités & collaborations",
+  "statusSubtext": "Développeur logiciel & web. Passionné par les défis d'ingénierie, la programmation système et les architectures modernes.",
+  "github": "https://github.com/nathanhounkpadode-glitch"
 };
 // ================================================================
 // DONNÉES DU PORTFOLIO — MODIFIABLES SANS TOUCHER AU CODE HTML !
