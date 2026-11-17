@@ -45,7 +45,7 @@ window.PORTFOLIO_SKILLS = [
 ];
 
 window.PORTFOLIO_PROFILE = {
-  "name": "Nathan HOUNKPADODE",
+  "name": "Nathan Schalom HOUNKPADODE",
   "fullName": "Nathan Schalom HOUNKPADODE",
   "badge": "Développeur Logiciel & Systèmes",
   "headline": "Concepteur d'applications <span class=\"highlight\">robustes & performantes</span>",

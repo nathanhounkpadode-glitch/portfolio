@@ -1111,8 +1111,8 @@
   <!-- Navigation -->
   <nav>
     <div class="container nav-content">
-      <a href="#" class="logo">
-        Nathan <span>HOUNKPADODE</span>
+      <a href="#" class="logo" id="navLogo">
+        Nathan Schalom <span>HOUNKPADODE</span>
       </a>
       <ul class="nav-links">
         <li><a href="#about">À propos</a></li>
@@ -1257,7 +1257,7 @@
     </section>
 
     <footer>
-      <p>© 2026 Nathan Schalom HOUNKPADODE — Portfolio Développeur</p>
+      <p id="footerCopyright">© 2026 Nathan Schalom HOUNKPADODE — Portfolio Développeur</p>
     </footer>
   </div>
 
@@ -1588,6 +1588,30 @@
     }
 
     function renderProfileUI() {
+      // Nom dans la navigation (Logo dynamique)
+      const navLogo = document.getElementById('navLogo');
+      if (navLogo && currentProfile.name) {
+        const parts = currentProfile.name.trim().split(' ');
+        if (parts.length > 1) {
+          const lastName = parts.pop();
+          const firstNames = parts.join(' ');
+          navLogo.innerHTML = `${firstNames} <span>${lastName}</span>`;
+        } else {
+          navLogo.textContent = currentProfile.name;
+        }
+      }
+
+      // Titre de l'onglet du navigateur
+      if (currentProfile.name) {
+        document.title = `${currentProfile.name} | Portfolio Développeur`;
+      }
+
+      // Footer
+      const footerCopyright = document.getElementById('footerCopyright');
+      if (footerCopyright && currentProfile.name) {
+        footerCopyright.textContent = `© 2026 ${currentProfile.name} — Portfolio Développeur`;
+      }
+
       // Photo de profil
       const avatarImg = document.getElementById('profileAvatarImg');
       const modalAvatar = document.getElementById('modalAvatarPreview');
