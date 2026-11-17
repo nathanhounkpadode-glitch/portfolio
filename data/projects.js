@@ -55,7 +55,9 @@ window.PORTFOLIO_PROFILE = {
   "phone": "+229 01 91 63 63 13",
   "status": "Disponible pour opportunités & collaborations",
   "statusSubtext": "Développeur logiciel & web. Passionné par les défis d'ingénierie, la programmation système et les architectures modernes.",
-  "github": "https://github.com/nathanhounkpadode-glitch"
+  "github": "https://github.com/nathanhounkpadode-glitch",
+  "headlinePrefix": "Concepteur d'applications",
+  "headlineHighlight": "robustes & performantes"
 };
 // ================================================================
 // DONNÉES DU PORTFOLIO — MODIFIABLES SANS TOUCHER AU CODE HTML !

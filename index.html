@@ -1076,6 +1076,31 @@
       transform: translateY(-2px);
     }
 
+
+    .btn-hero-edit {
+      background: rgba(59, 130, 246, 0.08);
+      border: 1px dashed rgba(59, 130, 246, 0.45);
+      color: #93c5fd;
+      padding: 5px 14px;
+      border-radius: 9999px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+      font-family: var(--font-main);
+    }
+
+    .btn-hero-edit:hover {
+      background: rgba(59, 130, 246, 0.22);
+      border-color: var(--accent);
+      color: #fff;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    }
+
   </style>
   <script src="data/projects.js"></script>
 </head>
@@ -1102,9 +1127,14 @@
     <!-- Hero Section -->
     <header class="hero" id="about">
       <div class="hero-content">
-        <div class="badge-epitech" id="profileBadge">
-          <span class="badge-dot"></span>
-          <span id="profileBadgeText">Développeur Logiciel & Systèmes</span>
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; flex-wrap: wrap;">
+          <div class="badge-epitech" id="profileBadge" style="margin-bottom: 0;">
+            <span class="badge-dot"></span>
+            <span id="profileBadgeText">Développeur Logiciel & Systèmes</span>
+          </div>
+          <button id="editHeroDirectBtn" class="btn-hero-edit" title="Modifier le titre et la présentation en direct">
+            ✏️ Modifier ce texte
+          </button>
         </div>
         <h1 id="profileHeadline">
           Concepteur d'applications <span class="highlight">robustes & performantes</span>
@@ -1276,7 +1306,7 @@
 
             <div class="form-row">
               <div class="form-group">
-                <label for="profileNameInput">Nom affiché *</label>
+                <label for="profileNameInput">Nom affiché (Logo) *</label>
                 <input type="text" id="profileNameInput" required placeholder="Ex: Nathan HOUNKPADODE">
               </div>
               <div class="form-group">
@@ -1285,14 +1315,23 @@
               </div>
             </div>
 
-            <div class="form-group">
-              <label for="profileHeadlineInput">Titre d'accroche (H1) *</label>
-              <input type="text" id="profileHeadlineInput" required placeholder="Ex: Concepteur d'applications robustes & performantes">
+            <div style="background: rgba(59, 130, 246, 0.05); border: 1px solid rgba(59, 130, 246, 0.2); border-radius: 12px; padding: 14px; margin-bottom: 16px;">
+              <label style="color: #93c5fd; margin-bottom: 10px;">Grand Titre d'Accueil (H1)</label>
+              <div class="form-row" style="margin-bottom: 0;">
+                <div class="form-group" style="margin-bottom: 0;">
+                  <label for="profileHeadlinePrefixInput" style="font-size: 0.74rem;">Texte principal *</label>
+                  <input type="text" id="profileHeadlinePrefixInput" required placeholder="Ex: Concepteur d'applications">
+                </div>
+                <div class="form-group" style="margin-bottom: 0;">
+                  <label for="profileHeadlineHighlightInput" style="font-size: 0.74rem;">Mots en couleur brillante (Dégradé) *</label>
+                  <input type="text" id="profileHeadlineHighlightInput" required placeholder="Ex: robustes & performantes">
+                </div>
+              </div>
             </div>
 
             <div class="form-group">
-              <label for="profileBioInput">Texte de présentation / Bio *</label>
-              <textarea id="profileBioInput" rows="3" required placeholder="Votre description, passions techniques et réalisations..."></textarea>
+              <label for="profileBioInput">Texte de présentation / Biographie *</label>
+              <textarea id="profileBioInput" rows="4" required placeholder="Votre description, passions techniques et réalisations..."></textarea>
             </div>
 
             <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 20px 0;">
@@ -1603,7 +1642,12 @@
 
       if (nameInput) nameInput.value = currentProfile.name || '';
       if (badgeInput) badgeInput.value = currentProfile.badge || '';
-      if (headlineInput) headlineInput.value = (currentProfile.headline || '').replace(/<[^>]*>/g, '');
+      
+      const prefixInput = document.getElementById('profileHeadlinePrefixInput');
+      const highlightInput = document.getElementById('profileHeadlineHighlightInput');
+      if (prefixInput) prefixInput.value = currentProfile.headlinePrefix || "Concepteur d'applications";
+      if (highlightInput) highlightInput.value = currentProfile.headlineHighlight || "robustes & performantes";
+
       if (bioInput) bioInput.value = (currentProfile.bio || '').replace(/<[^>]*>/g, '');
       if (statusInput) statusInput.value = currentProfile.status || '';
       if (subtextInput) subtextInput.value = currentProfile.statusSubtext || '';
@@ -1910,6 +1954,26 @@
         });
       });
 
+      // 3bis. Bouton direct "Modifier ce texte" sur le Hero
+      const editHeroDirectBtn = document.getElementById('editHeroDirectBtn');
+      if (editHeroDirectBtn) {
+        editHeroDirectBtn.addEventListener('click', () => {
+          document.querySelectorAll('.admin-tab-btn').forEach(b => b.classList.remove('active'));
+          document.querySelectorAll('.admin-tab-pane').forEach(p => p.classList.remove('active'));
+          const profTabBtn = document.querySelector('.admin-tab-btn[data-tab="tab-profile"]');
+          const profPane = document.getElementById('tab-profile');
+          if (profTabBtn) profTabBtn.classList.add('active');
+          if (profPane) profPane.classList.add('active');
+
+          renderProfileUI();
+          document.getElementById('adminModal').style.display = 'flex';
+          setTimeout(() => {
+            const input = document.getElementById('profileHeadlinePrefixInput');
+            if (input) input.focus();
+          }, 150);
+        });
+      }
+
       // 4. Formulaire Profil & Contact
       const profileForm = document.getElementById('profileForm');
       if (profileForm) {
@@ -1917,7 +1981,13 @@
           e.preventDefault();
           currentProfile.name = document.getElementById('profileNameInput').value.trim();
           currentProfile.badge = document.getElementById('profileBadgeInput').value.trim();
-          currentProfile.headline = document.getElementById('profileHeadlineInput').value.trim();
+
+          const prefixVal = document.getElementById('profileHeadlinePrefixInput').value.trim();
+          const highlightVal = document.getElementById('profileHeadlineHighlightInput').value.trim();
+          currentProfile.headlinePrefix = prefixVal;
+          currentProfile.headlineHighlight = highlightVal;
+          currentProfile.headline = `${prefixVal} <span class="highlight">${highlightVal}</span>`;
+
           currentProfile.bio = document.getElementById('profileBioInput').value.trim();
           currentProfile.status = document.getElementById('profileStatusInput').value.trim();
           currentProfile.statusSubtext = document.getElementById('profileStatusSubtextInput').value.trim();
